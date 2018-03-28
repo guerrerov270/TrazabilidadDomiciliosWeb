@@ -27,10 +27,10 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.bolsadeideas.springboot.app.models.entity.Cliente;
-import com.bolsadeideas.springboot.app.models.service.IClienteService;
-import com.bolsadeideas.springboot.app.models.service.IUploadFileService;
-import com.bolsadeideas.springboot.app.util.paginator.PageRender;
+import co.uq.pmvpedidos.app.models.entity.Cliente;
+import co.uq.pmvpedidos.app.models.service.IClienteService;
+import co.uq.pmvpedidos.app.models.service.IUploadFileService;
+import co.uq.pmvpedidos.app.util.paginator.PageRender;
 
 @Controller
 @SessionAttributes("cliente")
