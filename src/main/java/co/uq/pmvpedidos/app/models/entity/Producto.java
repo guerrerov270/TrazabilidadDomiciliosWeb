@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "productos")
 public class Producto implements Serializable {
@@ -22,7 +24,7 @@ public class Producto implements Serializable {
 	private Long id;
 
 	private String nombre;
-
+	
 	private Double precio;
 
 	@Temporal(TemporalType.DATE)
