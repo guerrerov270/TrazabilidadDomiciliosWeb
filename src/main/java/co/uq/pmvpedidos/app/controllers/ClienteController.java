@@ -65,7 +65,7 @@ public class ClienteController {
 		Cliente cliente = clienteService.findOne(id);
 		if (cliente == null) {
 			flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
-			return "redirect:/listar";
+			return "redirect:/listarClientes";
 		}
 
 		model.put("cliente", cliente);
@@ -105,11 +105,11 @@ public class ClienteController {
 			cliente = clienteService.findOne(id);
 			if (cliente == null) {
 				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
-				return "redirect:/listar";
+				return "redirect:/listarClientes";
 			}
 		} else {
 			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
-			return "redirect:/listar";
+			return "redirect:/listarClientes";
 		}
 		model.put("cliente", cliente);
 		model.put("titulo", "Editar Cliente");
@@ -152,7 +152,7 @@ public class ClienteController {
 		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
-		return "redirect:listar";
+		return "redirect:listarClientes";
 	}
 
 	@RequestMapping(value = "/eliminar/{id}")
@@ -169,6 +169,6 @@ public class ClienteController {
 			}
 
 		}
-		return "redirect:/listar";
+		return "redirect:/listarClientes";
 	}
 }

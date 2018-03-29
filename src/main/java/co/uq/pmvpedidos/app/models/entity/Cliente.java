@@ -48,6 +48,12 @@ public class Cliente implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 
+	
+	private String direccion;
+
+	
+	private String telefono;
+
 	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Factura> facturas;
 
@@ -147,6 +153,22 @@ public class Cliente implements Serializable {
 
 	public void addTelefono(Telefono telefono) {
 		telefonos.add(telefono);
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 
 	@Override
