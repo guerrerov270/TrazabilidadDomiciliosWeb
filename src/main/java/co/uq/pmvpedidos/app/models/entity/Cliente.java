@@ -34,10 +34,10 @@ public class Cliente implements Serializable {
 
 	@NotEmpty
 	private String nombre;
-	
+
 	@NotEmpty
 	private String apellido;
-	
+
 	@NotEmpty
 	@Email
 	private String email;
@@ -45,18 +45,26 @@ public class Cliente implements Serializable {
 	@NotNull
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
-	
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+
+	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Factura> facturas;
-	
+
+	@OneToMany(mappedBy = "clienteD", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Direccion> direcciones;
+
+	@OneToMany(mappedBy = "clienteT", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Telefono> telefonos;
+
 	public Cliente() {
 		facturas = new ArrayList<Factura>();
+		direcciones = new ArrayList<Direccion>();
+		telefonos = new ArrayList<Telefono>();
 	}
 
 	private String foto;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -112,9 +120,33 @@ public class Cliente implements Serializable {
 	public void setFacturas(List<Factura> facturas) {
 		this.facturas = facturas;
 	}
-	
+
 	public void addFactura(Factura factura) {
 		facturas.add(factura);
+	}
+
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
+
+	public void setDirecciones(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
+	}
+
+	public void addDireccion(Direccion direccion) {
+		direcciones.add(direccion);
+	}
+
+	public List<Telefono> getTelefonos() {
+		return telefonos;
+	}
+
+	public void setTelefonos(List<Telefono> telefonos) {
+		this.telefonos = telefonos;
+	}
+
+	public void addTelefono(Telefono telefono) {
+		telefonos.add(telefono);
 	}
 
 	@Override

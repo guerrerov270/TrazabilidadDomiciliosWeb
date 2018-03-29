@@ -40,7 +40,7 @@ public class Factura implements Serializable {
 	private Date createAt;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Cliente cliente;
+	private Cliente clienteF;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "factura_id")
@@ -88,11 +88,11 @@ public class Factura implements Serializable {
 	}
 
 	public Cliente getCliente() {
-		return cliente;
+		return clienteF;
 	}
 
 	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+		this.clienteF = cliente;
 	}
 
 	public List<ItemFactura> getItems() {
