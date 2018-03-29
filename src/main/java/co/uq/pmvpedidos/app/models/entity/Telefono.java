@@ -23,6 +23,10 @@ public class Telefono {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Cliente clienteT;
+	
+	public Telefono() {
+		
+	}
 
 	public Long getId() {
 		return id;
