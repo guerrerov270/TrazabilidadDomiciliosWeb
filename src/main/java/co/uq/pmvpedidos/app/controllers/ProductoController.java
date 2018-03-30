@@ -41,7 +41,7 @@ public class ProductoController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 
-	@GetMapping(value = "/uploadsp/{filename:.+}")
+	@GetMapping(value = "/uploads/{filename:.+}")
 	public ResponseEntity<Resource> verFoto(@PathVariable String filename) {
 
 		Resource recurso = null;

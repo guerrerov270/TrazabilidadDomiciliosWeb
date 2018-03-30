@@ -1,17 +1,13 @@
 package co.uq.pmvpedidos.app.models.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -26,19 +22,10 @@ public class Producto implements Serializable {
 	@NotEmpty
 	private String nombre;
 	
-	@NotEmpty
+	@NotNull
 	private Double precio;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "create_at")
-	private Date createAt;
-	
 	private String foto;
-
-	@PrePersist
-	public void prePersist() {
-		createAt = new Date();
-	}
 
 	public Long getId() {
 		return id;
@@ -63,15 +50,6 @@ public class Producto implements Serializable {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-	
 
 	public String getFoto() {
 		return foto;
