@@ -14,7 +14,7 @@
 
 				<img th:if="${#strings.length(producto.foto) > 0}"
 					class="img-thumbnail rounded float-left" style="max-width: 25%;"
-					th:src="@{'/uploadsp/' + ${producto.foto}}"
+					th:src="@{'/uploads/' + ${producto.foto}}"
 					th:alt="${producto.foto}" />
 
 				<ul class="list-group">

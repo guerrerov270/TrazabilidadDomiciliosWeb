@@ -59,7 +59,7 @@
 
 				<div th:if="${#lists.isEmpty(cliente.direcciones)}"
 					class="alert alert-info my-4"
-					th:text="'No hay direcciones registradas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
+					th:text="'No hay direcciones adicionales registradas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
 
 				<table th:if="${not #lists.isEmpty(cliente.direcciones)}"
 					class="table table-bordered table-striped my-4">
@@ -87,7 +87,7 @@
 
 				<div th:if="${#lists.isEmpty(cliente.telefonos)}"
 					class="alert alert-info my-4"
-					th:text="'No hay telefonos registradas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
+					th:text="'No hay telefonos adicionales registrados para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
 
 				<table th:if="${not #lists.isEmpty(cliente.telefonos)}"
 					class="table table-bordered table-striped my-4">
