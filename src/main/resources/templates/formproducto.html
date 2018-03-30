@@ -18,7 +18,7 @@
 					</ul>
 				</div>
 
-				<form th:action="@{/form}" th:object="${cliente}" method="post"
+				<form th:action="@{/formproducto}" th:object="${producto}" method="post"
 					enctype="multipart/form-data">
 					<div class="form-group row">
 						<label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
@@ -30,23 +30,15 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="apellido" class="col-sm-2 col-form-label">Apellido</label>
+						<label for="precio" class="col-sm-2 col-form-label">Precio</label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{apellido}" class="form-control"
+							<input type="number" th:field="*{precio}" class="form-control"
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
-								th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
+								th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
 						</div>
 					</div>
-					<div class="form-group row">
-						<label for="email" class="col-sm-2 col-form-label">Email</label>
-						<div class="col-sm-6">
-							<input type="text" th:field="*{email}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
-						</div>
-					</div>
+	
 					<div class="form-group row">
 						<label for="createAt" class="col-sm-2 col-form-label">Fecha</label>
 						<div class="col-sm-6">
@@ -54,26 +46,6 @@
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
 								th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
-						<div class="col-sm-6">
-							<input type="text" th:field="*{direccion}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<label for="telefono" class="col-sm-2 col-form-label">Teléfono</label>
-						<div class="col-sm-6">
-							<input type="text" th:field="*{telefono}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
 						</div>
 					</div>
 
