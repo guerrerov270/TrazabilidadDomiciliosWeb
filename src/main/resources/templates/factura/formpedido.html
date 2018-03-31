@@ -11,20 +11,19 @@
 			<div class="card-body">
 				<h4 class="card-title">
 					<a class="btn btn-light btn-xs"
-						th:href="@{'/ver/' + ${factura.cliente.id}}"
+						th:href="@{'/verpedido/' + ${factura.id}}"
 						th:text="'&laquo; volver'"></a>
 				</h4>
 
-				<form th:action="@{/factura/form/}" th:object="${factura}"
+				<form th:action="@{/factura/formpedido/}" th:object="${factura}"
 					method="post">
 
 					<div class="form-group row">
 						<label for="cliente" class="col-sm-2 col-form-label"
 							th:text="'Cliente'"></label>
 						<div class="col-sm-6">
-							<input name="cliente"
-								th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}"
-								class="form-control" disabled='disabled' />
+							<input type="text" th:field="*{cliente}" name="cliente"
+								class="form-control" th:errorclass="'form-control is-invalid'" />
 						</div>
 					</div>
 
@@ -32,8 +31,11 @@
 						<label for="descripcion" class="col-sm-2 col-form-label"
 							th:text="'Descripción'"></label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{descripcion}" class="form-control" th:errorclass="'form-control is-invalid'" />
-							<div class="invalid-feedback" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+							<input type="text" th:field="*{descripcion}" class="form-control"
+								th:errorclass="'form-control is-invalid'" />
+							<div class="invalid-feedback"
+								th:if="${#fields.hasErrors('descripcion')}"
+								th:errors="*{descripcion}"></div>
 						</div>
 					</div>
 
@@ -70,7 +72,9 @@
 						<tbody>
 						</tbody>
 					</table>
-					<h5>Total <span class="badge badge-secondary" id="gran_total">0</span></h5>
+					<h5>
+						Total <span class="badge badge-secondary" id="gran_total">0</span>
+					</h5>
 
 					<div class="form-group row">
 						<div class="col-sm-6">

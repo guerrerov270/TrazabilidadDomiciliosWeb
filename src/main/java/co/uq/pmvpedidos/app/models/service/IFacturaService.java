@@ -4,20 +4,24 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
 
-public interface IProductoService {
+public interface IFacturaService {
 
-	public List<Producto> findAll();
+	public List<Factura> findAll();
 
-	public Page<Producto> findAll(Pageable pageable);
+	public Page<Factura> findAll(Pageable pageable);
 
-	public void save(Producto producto);
+	public void save(Factura factura);
 
-	public Producto findOne(Long id);
+	public Factura findOne(Long id);
 
 	public void delete(Long id);
 
 	public List<Producto> findByNombre(String term);
+
+	public Producto findProductoById(Long id);
 
 }
