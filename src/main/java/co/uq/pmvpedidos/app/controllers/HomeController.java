@@ -11,9 +11,14 @@ public class HomeController {
 	public String inicio() {
 		return "home";
 	}
-	
+
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home() {
 		return "home";
+	}
+
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String error() {
+		return "error";
 	}
 }
