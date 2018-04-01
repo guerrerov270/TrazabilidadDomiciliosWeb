@@ -85,7 +85,7 @@ public class FacturaController {
 		return facturaService.findByNombre(term);
 	}
 
-	@RequestMapping(value = "/formpedido", method = RequestMethod.POST)
+	@PostMapping("/formpedido")
 	public String guardar(@Valid Factura factura, BindingResult result, Model model,
 			@RequestParam(name = "item_id[]", required = false) Long[] itemId,
 			@RequestParam(name = "cantidad[]", required = false) Integer[] cantidad, RedirectAttributes flash,

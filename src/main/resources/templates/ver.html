@@ -13,7 +13,7 @@
 
 				<h4 class="card-title">
 					<a class="btn btn-primary btn-xs"
-						th:href="@{'/factura/form/' + ${cliente.id}}"
+						th:href="@{'formpedido/' + ${cliente.id}}"
 						th:text="'crear factura'"></a>
 				</h4>
 
@@ -24,7 +24,7 @@
 					<li class="list-group-item" th:text="${cliente.telefono}"></li>
 				</ul>
 
-				<div th:if="${#lists.isEmpty(cliente.facturas)}"
+				<!-- <div th:if="${#lists.isEmpty(cliente.facturas)}"
 					class="alert alert-info my-4"
 					th:text="'No hay facturas asignadas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
 
@@ -55,7 +55,7 @@
 						</tr>
 					</tbody>
 
-				</table>
+				</table> -->
 
 				<div th:if="${#lists.isEmpty(cliente.direcciones)}"
 					class="alert alert-info my-4"
