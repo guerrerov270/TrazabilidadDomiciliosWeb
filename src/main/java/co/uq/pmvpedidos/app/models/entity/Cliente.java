@@ -35,8 +35,8 @@ public class Cliente implements Serializable {
 
 	private String telefono;
 
-	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Factura> facturas;
+//	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Factura> facturas;
 
 	@OneToMany(mappedBy = "clienteD", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Direccion> direcciones;
@@ -45,7 +45,7 @@ public class Cliente implements Serializable {
 	private List<Telefono> telefonos;
 
 	public Cliente() {
-		facturas = new ArrayList<Factura>();
+		//facturas = new ArrayList<Factura>();
 		direcciones = new ArrayList<Direccion>();
 		telefonos = new ArrayList<Telefono>();
 	}
@@ -75,17 +75,17 @@ public class Cliente implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public List<Factura> getFacturas() {
-		return facturas;
-	}
-
-	public void setFacturas(List<Factura> facturas) {
-		this.facturas = facturas;
-	}
-
-	public void addFactura(Factura factura) {
-		facturas.add(factura);
-	}
+//	public List<Factura> getFacturas() {
+//		return facturas;
+//	}
+//
+//	public void setFacturas(List<Factura> facturas) {
+//		this.facturas = facturas;
+//	}
+//
+//	public void addFactura(Factura factura) {
+//		facturas.add(factura);
+//	}
 
 	public List<Direccion> getDirecciones() {
 		return direcciones;

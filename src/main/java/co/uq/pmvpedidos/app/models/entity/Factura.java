@@ -39,8 +39,12 @@ public class Factura implements Serializable {
 	@Column(name = "create_at")
 	private Date createAt;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Cliente clienteF;
+	private String cliente;
+
+	private String estado;
+
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// private Cliente clienteF;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "factura_id")
@@ -87,16 +91,32 @@ public class Factura implements Serializable {
 		this.createAt = createAt;
 	}
 
-	public Cliente getCliente() {
-		return clienteF;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.clienteF = cliente;
-	}
+	// public Cliente getCliente() {
+	// return clienteF;
+	// }
+	//
+	// public void setCliente(Cliente cliente) {
+	// this.clienteF = cliente;
+	// }
 
 	public List<ItemFactura> getItems() {
 		return items;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public void setItems(List<ItemFactura> items) {
