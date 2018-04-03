@@ -43,8 +43,8 @@ public class Factura implements Serializable {
 
 	private String estado;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// private Cliente clienteF;
+//	 @ManyToOne(fetch = FetchType.LAZY)
+//	 private Cliente clienteF;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "factura_id")
@@ -91,13 +91,13 @@ public class Factura implements Serializable {
 		this.createAt = createAt;
 	}
 
-	// public Cliente getCliente() {
-	// return clienteF;
-	// }
-	//
-	// public void setCliente(Cliente cliente) {
-	// this.clienteF = cliente;
-	// }
+//	 public Cliente getCliente() {
+//	 return clienteF;
+//	 }
+//	
+//	 public void setCliente(Cliente cliente) {
+//	 this.clienteF = cliente;
+//	 }
 
 	public List<ItemFactura> getItems() {
 		return items;

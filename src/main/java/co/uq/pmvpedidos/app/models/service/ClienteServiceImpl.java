@@ -16,17 +16,14 @@ import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
 
 @Service
-public class ClienteServiceImpl implements IClienteService{
+public class ClienteServiceImpl implements IClienteService {
 
 	@Autowired
 	private IClienteDao clienteDao;
-	
-	@Autowired
-	private IProductoDao productoDao;
-	
+
 	@Autowired
 	private IFacturaDao facturaDao;
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> findAll() {
@@ -38,7 +35,7 @@ public class ClienteServiceImpl implements IClienteService{
 	@Transactional
 	public void save(Cliente cliente) {
 		clienteDao.save(cliente);
-		
+
 	}
 
 	@Override
@@ -51,7 +48,7 @@ public class ClienteServiceImpl implements IClienteService{
 	@Transactional
 	public void delete(Long id) {
 		clienteDao.delete(id);
-		
+
 	}
 
 	@Override
@@ -61,26 +58,13 @@ public class ClienteServiceImpl implements IClienteService{
 	}
 
 	@Override
-	@Transactional(readOnly = true)
-	public List<Producto> findByNombre(String term) {
-		return productoDao.findByNombreLikeIgnoreCase("%"+term+"%");
-	}
-
-	@Override
 	@Transactional
 	public void saveFactura(Factura factura) {
 		facturaDao.save(factura);
 	}
 
 	@Override
-	@Transactional(readOnly=true)
-	public Producto findProductoById(Long id) {
-		// TODO Auto-generated method stub
-		return productoDao.findOne(id);
-	}
-
-	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Factura findFacturaById(Long id) {
 		return facturaDao.findOne(id);
 	}
@@ -90,6 +74,5 @@ public class ClienteServiceImpl implements IClienteService{
 	public void deleteFactura(Long id) {
 		facturaDao.delete(id); // facturaDao.deleteById(id);
 	}
-	
-	
+
 }
