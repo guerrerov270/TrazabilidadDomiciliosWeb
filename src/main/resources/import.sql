@@ -35,11 +35,11 @@ INSERT INTO productos (nombre,  precio, foto) VALUES('Bianchi Bicicleta Aro 26',
 INSERT INTO productos (nombre,  precio, foto) VALUES('Mica Comoda 5 Cajones', 299990, '');
 
 /* Creamos algunas facturas */
-INSERT INTO facturas (descripcion, observacion, create_at, cliente, estado) VALUES('Factura equipos de oficina', null, NOW(), 'un cliente', 'un estado');
+INSERT INTO facturas (descripcion, observacion, clientef_id, create_at) VALUES('Factura equipos de oficina', null, 1, NOW());
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(1, 1, 1);
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(2, 1, 4);
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(1, 1, 5);
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(1, 1, 7);
 
-INSERT INTO facturas (descripcion, observacion, create_at, cliente, estado) VALUES('Factura Bicicleta', 'Alguna nota importante!', NOW(), 'un cliente', 'un estado');
+INSERT INTO facturas (descripcion, observacion, clientef_id, create_at) VALUES('Factura Bicicleta', 'Alguna nota importante!', 1, NOW());
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(3, 2, 6);
