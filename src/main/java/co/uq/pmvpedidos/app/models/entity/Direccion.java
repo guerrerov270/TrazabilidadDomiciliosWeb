@@ -18,19 +18,16 @@ public class Direccion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotEmpty
 	private String descripcion;
-	
-	@NotEmpty
-	private String zona;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Cliente clienteD;
-	
+
 	@OneToOne
 	private Zona zonaID;
-	
+
 	public Direccion() {
 
 	}
@@ -51,14 +48,6 @@ public class Direccion {
 		this.descripcion = descripcion;
 	}
 
-	public String getZona() {
-		return zona;
-	}
-
-	public void setZona(String zona) {
-		this.zona = zona;
-	}
-
 	public Cliente getClienteD() {
 		return clienteD;
 	}
@@ -66,6 +55,5 @@ public class Direccion {
 	public void setClienteD(Cliente clienteD) {
 		this.clienteD = clienteD;
 	}
-	
-	
+
 }

@@ -20,6 +20,9 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Autowired
 	private IClienteDao clienteDao;
+	
+	@Autowired
+	private IProductoDao productoDao;
 
 	@Autowired
 	private IFacturaDao facturaDao;
@@ -73,6 +76,19 @@ public class ClienteServiceImpl implements IClienteService {
 	@Transactional
 	public void deleteFactura(Long id) {
 		facturaDao.delete(id); // facturaDao.deleteById(id);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Producto> findByNombre(String term) {
+		return productoDao.findByNombreLikeIgnoreCase("%"+term+"%");
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public Producto findProductoById(Long id) {
+		// TODO Auto-generated method stub
+		return productoDao.findOne(id);
 	}
 
 }

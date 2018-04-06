@@ -13,18 +13,18 @@
 
 				<h4 class="card-title">
 					<a class="btn btn-primary btn-xs"
-						th:href="@{'formpedido/' + ${cliente.id}}"
+						th:href="@{'/factura/form/' + ${cliente.id}}"
 						th:text="'crear factura'"></a>
 				</h4>
 
 				<ul class="list-group">
 					<li class="list-group-item active" th:text="${cliente.nombre}"></li>
 					<li class="list-group-item" th:text="${cliente.apellido}"></li>
-					<li class="list-group-item" th:text="${cliente.direccion}"></li>
-					<li class="list-group-item" th:text="${cliente.telefono}"></li>
+					<li class="list-group-item" th:text="${cliente.email}"></li>
+					<li class="list-group-item" th:text="${cliente.createAt}"></li>
 				</ul>
 
-				<!-- <div th:if="${#lists.isEmpty(cliente.facturas)}"
+				<div th:if="${#lists.isEmpty(cliente.facturas)}"
 					class="alert alert-info my-4"
 					th:text="'No hay facturas asignadas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
 
@@ -51,61 +51,7 @@
 							<td><a class="btn btn-danger btn-xs"
 								th:href="@{'/factura/eliminar/' + ${factura.id}}"
 								th:text="'eliminar'"
-								onclick="return confirm('¿Está seguro que desea eliminar la factura?');"></a></td>
-						</tr>
-					</tbody>
-
-				</table> -->
-
-				<div th:if="${#lists.isEmpty(cliente.direcciones)}"
-					class="alert alert-info my-4"
-					th:text="'No hay direcciones adicionales registradas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
-
-				<table th:if="${not #lists.isEmpty(cliente.direcciones)}"
-					class="table table-bordered table-striped my-4">
-					<thead class="thead-inverse">
-						<tr>
-							<th>ID</th>
-							<th>Dirección</th>
-							<th>Zona</th>
-							<th>Eliminar</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="direccion: ${cliente.direcciones}">
-							<td th:text="${direccion.id}"></td>
-							<td th:text="${direccion.descripcion}"></td>
-							<td th:text="${direccion.zona}"></td>
-							<td><a class="btn btn-danger btn-xs"
-								th:href="@{'/direccion/eliminar/' + ${direccion.id}}"
-								th:text="'Eliminar'"
-								onclick="return confirm('¿Está seguro que desea eliminar la dirección?');"></a></td>
-						</tr>
-					</tbody>
-
-				</table>
-
-				<div th:if="${#lists.isEmpty(cliente.telefonos)}"
-					class="alert alert-info my-4"
-					th:text="'No hay telefonos adicionales registrados para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
-
-				<table th:if="${not #lists.isEmpty(cliente.telefonos)}"
-					class="table table-bordered table-striped my-4">
-					<thead class="thead-inverse">
-						<tr>
-							<th>Número</th>
-							<th>Descripción</th>
-							<th>Eliminar</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="telefono: ${cliente.telefonos}">
-							<td th:text="${telefono.id}"></td>
-							<td th:text="${telefono.descripcion}"></td>
-							<td><a class="btn btn-danger btn-xs"
-								th:href="@{'/telefono/eliminar/' + ${telefono.id}}"
-								th:text="'Eliminar'"
-								onclick="return confirm('¿Está seguro que desea eliminar el teléfono?');"></a></td>
+								onclick="return confirm('¿Estas seguro que desea eliminar la factura?');"></a></td>
 						</tr>
 					</tbody>
 

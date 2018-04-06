@@ -38,25 +38,29 @@
 								th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
 						</div>
 					</div>
-
 					<div class="form-group row">
-						<label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
+						<label for="email" class="col-sm-2 col-form-label">Email</label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{direccion}" class="form-control"
+							<input type="text" th:field="*{email}" class="form-control"
 								th:errorclass="'form-control alert-danger'" /> <small
 								class="form-text text-danger"
-								th:if="${#fields.hasErrors('direccion')}"
-								th:errors="*{direccion}"></small>
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="createAt" class="col-sm-2 col-form-label">Fecha</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" th:field="*{createAt}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
 						</div>
 					</div>
 
 					<div class="form-group row">
-						<label for="telefono" class="col-sm-2 col-form-label">Teléfono</label>
+						<label for="file" class="col-sm-2 col-form-label">Foto</label>
 						<div class="col-sm-6">
-							<input type="text" th:field="*{telefono}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></small>
+							<input type="file" name="file" class="form-control" />
 						</div>
 					</div>
 
@@ -66,7 +70,6 @@
 								class="btn btn-secondary" />
 						</div>
 					</div>
-
 				</form>
 			</div>
 		</div>
