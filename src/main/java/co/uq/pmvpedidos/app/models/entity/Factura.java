@@ -28,15 +28,15 @@ public class Factura implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String descripcion;
-
 	private String observacion;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "create_at")
-	private Date createAt;
+	private Date creado;
 
 	private String estado;
+
+	@Temporal(TemporalType.DATE)
+	private Date entregado;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Cliente clienteF;
@@ -51,7 +51,7 @@ public class Factura implements Serializable {
 
 	@PrePersist
 	public void prePersist() {
-		createAt = new Date();
+		creado = new Date();
 	}
 
 	public Long getId() {
@@ -62,28 +62,12 @@ public class Factura implements Serializable {
 		this.id = id;
 	}
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
 	public String getObservacion() {
 		return observacion;
 	}
 
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
 	}
 
 	public Cliente getCliente() {
@@ -112,6 +96,22 @@ public class Factura implements Serializable {
 
 	public void addItemFactura(ItemFactura item) {
 		this.items.add(item);
+	}
+
+	public Date getCreado() {
+		return creado;
+	}
+
+	public void setCreado(Date creado) {
+		this.creado = creado;
+	}
+
+	public Date getEntregado() {
+		return entregado;
+	}
+
+	public void setEntregado(Date entregado) {
+		this.entregado = entregado;
 	}
 
 	public Double getTotal() {

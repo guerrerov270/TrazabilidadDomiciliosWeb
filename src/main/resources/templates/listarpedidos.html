@@ -19,31 +19,26 @@
 					<thead class="thead-inverse">
 						<tr>
 							<th>ID</th>
-							<th>Descripción</th>
+							<th>Estado</th>
 							<th>Observación</th>
 							<th>Registrado</th>
+							<th>Entregado</th>
 							<th>Cliente</th>
-							<th>Estado</th>
 							<th>Editar</th>
 							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="pedido: ${pedidos}">
+						<tr th:each="factura: ${facturas}">
 							<td><a class="btn btn-primary btn-xs"
-								th:href="@{/verpedido/} + ${pedido.id}"
-								th:text="${pedido.id}"></a></td>
-							<td th:text="${pedido.descripcion}"></td>
-							<td th:text="${pedido.observacion}"></td>
-							<td th:text="${pedido.createAt}"></td>
-							<td th:text="${pedido.cliente}"></td>
-							<td th:text="${pedido.estado}"></td>
+								th:href="@{/ver/} + ${factura.id}" th:text="${factura.id}"></a></td>
+							<td th:text="${factura.estado}"></td>
+							<td th:text="${factura.observacion}"></td>
+							<td th:text="${factura.creado}"></td>
+							<td th:text="${factura.entregado}"></td>
+							<td th:text="${factura.cliente}"></td>
 							<td><a class="btn btn-primary btn-xs"
 								th:href="@{/formpedido/} + ${pedido.id}" th:text="'editar'"></a></td>
-							<td><a class="btn btn-danger btn-xs"
-								th:href="@{/eliminarpedido/} + ${pedido.id}"
-								th:text="'eliminar'"
-								onclick="return confirm('Estas seguro que quieres eliminar?');"></a></td>
 						</tr>
 					</tbody>
 
