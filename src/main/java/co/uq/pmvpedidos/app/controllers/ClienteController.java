@@ -26,8 +26,6 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
-
 import co.uq.pmvpedidos.app.models.entity.Cliente;
 import co.uq.pmvpedidos.app.models.service.IClienteService;
 import co.uq.pmvpedidos.app.util.paginator.PageRender;
@@ -56,7 +54,7 @@ public class ClienteController {
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
-		Pageable pageRequest = new PageRequest(page, 4);
+		Pageable pageRequest = new PageRequest(page, 50);
 
 		Page<Cliente> clientes = clienteService.findAll(pageRequest);
 
@@ -97,8 +95,8 @@ public class ClienteController {
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(@Valid Cliente cliente, BindingResult result, Model model,
-			@RequestParam("file") MultipartFile foto, RedirectAttributes flash, SessionStatus status) {
+	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash,
+			SessionStatus status) {
 
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Cliente");
@@ -117,7 +115,6 @@ public class ClienteController {
 	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
 		if (id > 0) {
-			Cliente cliente = clienteService.findOne(id);
 
 			clienteService.delete(id);
 			flash.addFlashAttribute("success", "Cliente eliminado con éxito!");

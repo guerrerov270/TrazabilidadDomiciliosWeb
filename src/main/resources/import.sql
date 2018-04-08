@@ -1,29 +1,6 @@
 /* Populate tables */
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Andres', 'Guzman','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('John', 'Doe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Linus', 'Torvalds','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Jane', 'Doe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Rasmus', 'Lerdorf','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Erich', 'Gamma','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Richard', 'Helm','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Ralph', 'Johnson','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('John', 'Vlissides','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('James', 'Gosling','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Bruce', 'Lee','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Johnny', 'Doe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('John', 'Roe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Jane', 'Roe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Richard', 'Doe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Janie', 'Doe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Phillip', 'Webb','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Stephane', 'Nicoll','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Sam', 'Brannen','una dirección', '7773636');  
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Juergen', 'Hoeller','una dirección', '7773636'); 
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Janie', 'Roe','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('John', 'Smith','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Joe', 'Bloggs','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('John', 'Stiles','una dirección', '7773636');
-INSERT INTO clientes (nombre, apellido, direccion, telefono) VALUES('Richard', 'Roe','una dirección', '7773636');
+INSERT INTO clientes (telefono, nombre, direccion, empresa, create_at) VALUES('7355586', 'Andrés Guzman','una dirección', 'Don Pollo', NOW());
+
 
 /* Populate tabla productos */
 INSERT INTO productos (nombre,  precio, foto) VALUES('Panasonic Pantalla LCD', 259990, '');
