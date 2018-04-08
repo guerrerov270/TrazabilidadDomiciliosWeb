@@ -1,5 +1,6 @@
 package co.uq.pmvpedidos.app.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
+import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.ItemFactura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
@@ -152,14 +154,10 @@ public class FacturaController {
 		model.addAttribute("page", pageRender);
 		return "listarpedidos";
 	}
-	
+
 	@ModelAttribute("estados")
-	   public Map<String, String> getCountryList() {
-	      Map<String, String> countryList = new HashMap<String, String>();
-	      countryList.put("PE", "Pendiente");
-	      countryList.put("PR", "Producción");
-	      countryList.put("DE", "Despachado");
-	      countryList.put("EN", "Entregado");
-	      return countryList;
-	   }
+	public void getEstados(Model model) {
+		List<Estado> estados = facturaService.findAllStates();
+		model.addAttribute("estados", estados);
+	}
 }

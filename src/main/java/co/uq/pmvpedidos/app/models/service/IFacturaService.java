@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
 
 public interface IFacturaService {
 
 	public List<Factura> findAll();
+	
+	public List<Estado> findAllStates();
 
 	public Page<Factura> findAll(Pageable pageable);
 

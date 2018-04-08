@@ -12,8 +12,7 @@
 			<div class="card-body">
 
 				<h4 class="card-title">
-					<a class="btn btn-primary btn-xs">Crear
-						pedido</a>
+					<a class="btn btn-primary btn-xs">Crear pedido</a>
 				</h4>
 				<div th:if="${#lists.isEmpty(facturas)}"
 					class="alert alert-info my-4"
@@ -41,7 +40,12 @@
 							<td th:text="${factura.observacion}"></td>
 							<td th:text="${factura.creado}"></td>
 							<td th:text="${factura.entregado}"></td>
-							<td th:text="${factura.estado}"></td>
+							<td><select class="form-control" id="estados" name="estados">
+									<option value="">Seleccione uno</option>
+									<option th:each="estado : ${estados}"
+										th:value="${estado.descripcion}"
+										th:text="${estado.descripcion}"></option>
+							</select></td>
 							<td th:text="${factura.total}"></td>
 						</tr>
 					</tbody>

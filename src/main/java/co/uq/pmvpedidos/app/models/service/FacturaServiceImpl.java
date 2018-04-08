@@ -8,8 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import co.uq.pmvpedidos.app.models.dao.IEstadoDao;
 import co.uq.pmvpedidos.app.models.dao.IFacturaDao;
 import co.uq.pmvpedidos.app.models.dao.IProductoDao;
+import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
 
@@ -21,6 +23,9 @@ public class FacturaServiceImpl implements IFacturaService {
 
 	@Autowired
 	private IProductoDao productoDao;
+	
+	@Autowired
+	private IEstadoDao estadoDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -68,6 +73,12 @@ public class FacturaServiceImpl implements IFacturaService {
 	public Producto findProductoById(Long id) {
 		// TODO Auto-generated method stub
 		return productoDao.findOne(id);
+	}
+
+	@Override
+	public List<Estado> findAllStates() {
+		// TODO Auto-generated method stub
+		return (List<Estado>) estadoDao.findAll();
 	}
 
 }
