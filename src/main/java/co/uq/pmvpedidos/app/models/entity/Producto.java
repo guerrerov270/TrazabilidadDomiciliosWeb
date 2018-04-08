@@ -27,6 +27,9 @@ public class Producto implements Serializable {
 	@NotEmpty
 	private String nombre;
 
+	@NotEmpty
+	private String descripcion;
+
 	@NotNull
 	private Double precio;
 
@@ -79,6 +82,14 @@ public class Producto implements Serializable {
 
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	private static final long serialVersionUID = 1L;

@@ -19,9 +19,16 @@
 
 				<ul class="list-group">
 					<li class="list-group-item active" th:text="${producto.nombre}"></li>
+					<li class="list-group-item active"
+						th:text="${producto.descripcion}"></li>
 					<li class="list-group-item" th:text="${producto.precio}"></li>
 				</ul>
 
+			</div>
+
+			<div>
+				<a class="btn btn-primary btn-xs"
+					th:href="@{/formproducto/} + ${producto.id}" th:text="'Editar producto'"></a>
 			</div>
 		</div>
 

@@ -20,22 +20,19 @@
 						<tr>
 							<th>ID</th>
 							<th>Nombre</th>
+							<th>Descripción</th>
 							<th>Precio</th>
-							<th>Editar</th>
-							<th>Eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="producto: ${productos}">
 							<td><a class="btn btn-primary btn-xs"
-								th:href="@{/verproducto/} + ${producto.id}" th:text="${producto.id}"></a></td>
+								th:href="@{/verproducto/} + ${producto.id}"
+								th:text="${producto.id}"></a></td>
 							<td th:text="${producto.nombre}"></td>
+							<td th:text="${producto.descripcion}"></td>
 							<td th:text="${producto.precio}"></td>
-							<td><a class="btn btn-primary btn-xs"
-								th:href="@{/formproducto/} + ${producto.id}" th:text="'editar'"></a></td>
-							<td><a class="btn btn-danger btn-xs"
-								th:href="@{/eliminarproducto/} + ${producto.id}" th:text="'eliminar'"
-								onclick="return confirm('Estas seguro que quieres eliminar?');"></a></td>
+
 						</tr>
 					</tbody>
 
