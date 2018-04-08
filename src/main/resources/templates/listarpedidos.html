@@ -10,35 +10,35 @@
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
+				<div th:if="${#lists.isEmpty(facturas)}"
+					class="alert alert-info my-4"
+					th:text="'No hay pedidos registrados aún'"></div>
 
-				<h4 class="card-title">
-					<a th:href="@{formpedido}" class="btn btn-primary btn-xs">Crear
-						Pedido</a>
-				</h4>
-				<table class="table table-striped table-bordered">
+				<table th:if="${not #lists.isEmpty(facturas)}"
+					class="table table-bordered table-striped my-4">
 					<thead class="thead-inverse">
 						<tr>
 							<th>ID</th>
-							<th>Estado</th>
-							<th>Observación</th>
-							<th>Registrado</th>
-							<th>Entregado</th>
 							<th>Cliente</th>
-							<th>Editar</th>
-							<th>Eliminar</th>
+							<th>Observaciones</th>
+							<th>Recibido</th>
+							<th>Entregado</th>
+							<th>Estado</th>
+							<th>Total</th>
+							<th>Ver</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="factura: ${facturas}">
-							<td><a class="btn btn-primary btn-xs"
-								th:href="@{/ver/} + ${factura.id}" th:text="${factura.id}"></a></td>
-							<td th:text="${factura.estado}"></td>
+							<td th:text="${factura.id}"></td>
+							<td th:text="${factura.cliente}"></td>
 							<td th:text="${factura.observacion}"></td>
 							<td th:text="${factura.creado}"></td>
 							<td th:text="${factura.entregado}"></td>
-							<td th:text="${factura.cliente}"></td>
+							<td th:text="${factura.estado}"></td>
+							<td th:text="${factura.total}"></td>
 							<td><a class="btn btn-primary btn-xs"
-								th:href="@{/formpedido/} + ${pedido.id}" th:text="'editar'"></a></td>
+								th:href="@{'/factura/ver/' + ${factura.id}}" th:text="'Detalle'"></a></td>
 						</tr>
 					</tbody>
 
@@ -46,6 +46,7 @@
 				<nav th:replace="paginator-nav :: paginator"></nav>
 			</div>
 		</div>
+
 
 	</div>
 

@@ -18,7 +18,7 @@ public class FacturaServiceImpl implements IFacturaService {
 
 	@Autowired
 	private IFacturaDao facturaDao;
-	
+
 	@Autowired
 	private IProductoDao productoDao;
 

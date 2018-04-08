@@ -41,6 +41,9 @@ public class FacturaController {
 	@Autowired
 	private IClienteService clienteService;
 
+	@Autowired
+	private IFacturaService facturaService;
+
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
 	@GetMapping("/ver/{id}")
@@ -132,5 +135,19 @@ public class FacturaController {
 		flash.addFlashAttribute("error", "La factura no existe en la base de datos, no se pudo eliminar!");
 
 		return "redirect:/listar";
+	}
+
+	@RequestMapping(value = "/listarpedidos", method = RequestMethod.GET)
+	public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
+
+		Pageable pageRequest = new PageRequest(page, 50);
+
+		Page<Factura> facturas = facturaService.findAll(pageRequest);
+
+		PageRender<Factura> pageRender = new PageRender<Factura>("/listarpedidos", facturas);
+		model.addAttribute("titulo", "Listado de facturas");
+		model.addAttribute("facturas", facturas);
+		model.addAttribute("page", pageRender);
+		return "listarpedidos";
 	}
 }
