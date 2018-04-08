@@ -1,5 +1,6 @@
 package co.uq.pmvpedidos.app.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -145,9 +147,19 @@ public class FacturaController {
 		Page<Factura> facturas = facturaService.findAll(pageRequest);
 
 		PageRender<Factura> pageRender = new PageRender<Factura>("/listarpedidos", facturas);
-		model.addAttribute("titulo", "Listado de facturas");
+		model.addAttribute("titulo", "Listado de pedidos");
 		model.addAttribute("facturas", facturas);
 		model.addAttribute("page", pageRender);
 		return "listarpedidos";
 	}
+	
+	@ModelAttribute("estados")
+	   public Map<String, String> getCountryList() {
+	      Map<String, String> countryList = new HashMap<String, String>();
+	      countryList.put("PE", "Pendiente");
+	      countryList.put("PR", "Producción");
+	      countryList.put("DE", "Despachado");
+	      countryList.put("EN", "Entregado");
+	      return countryList;
+	   }
 }
