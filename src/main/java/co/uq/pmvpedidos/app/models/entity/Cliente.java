@@ -16,9 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,12 +30,14 @@ public class Cliente implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty
 	private String telefono;
 
 	@NotEmpty
 	private String nombre;
 
-	private String direccion;
+	@NotEmpty
+	private Direccion direccion;
 
 	private String empresa;
 
@@ -45,6 +45,8 @@ public class Cliente implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
+
+	private String resenia;
 
 	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Factura> facturas;
@@ -105,11 +107,11 @@ public class Cliente implements Serializable {
 		telefonos.add(telefono);
 	}
 
-	public String getDireccion() {
+	public Direccion getDireccion() {
 		return direccion;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
 
@@ -143,6 +145,14 @@ public class Cliente implements Serializable {
 
 	public void setEmpresa(String empresa) {
 		this.empresa = empresa;
+	}
+
+	public String getResenia() {
+		return resenia;
+	}
+
+	public void setResenia(String resenia) {
+		this.resenia = resenia;
 	}
 
 	@Override

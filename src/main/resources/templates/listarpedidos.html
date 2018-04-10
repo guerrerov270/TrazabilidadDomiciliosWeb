@@ -40,7 +40,8 @@
 							<td th:text="${factura.observacion}"></td>
 							<td th:text="${factura.creado}"></td>
 							<td th:text="${factura.entregado}"></td>
-							<td><select class="form-control" id="estados" name="estados">
+							<td><select class="form-control" id="estados" name="estados"
+								onchange="myFunction()">
 									<option value="">Seleccione uno</option>
 									<option th:each="estado : ${estados}"
 										th:value="${estado.descripcion}"
@@ -49,13 +50,20 @@
 							<td th:text="${factura.total}"></td>
 						</tr>
 					</tbody>
-
 				</table>
 				<nav th:replace="paginator-nav :: paginator"></nav>
 			</div>
 		</div>
 
 
+	</div>
+	<div>
+		<p id="demo"></p>
+		<script>
+			function myFunction() {
+				var x = document.getElementById("estados").value;
+			}
+		</script>
 	</div>
 
 	<footer th:replace="layout/layout :: footer"></footer>
