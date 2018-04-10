@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,6 +38,7 @@ public class Cliente implements Serializable {
 	private String nombre;
 
 	@NotEmpty
+	@OneToOne
 	private Direccion direccion;
 
 	private String empresa;
@@ -51,16 +53,16 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Factura> facturas;
 
-	@OneToMany(mappedBy = "clienteD", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Direccion> direcciones;
-
-	@OneToMany(mappedBy = "clienteT", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Telefono> telefonos;
+//	@OneToMany(mappedBy = "clienteD", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Direccion> direcciones;
+//
+//	@OneToMany(mappedBy = "clienteT", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<Telefono> telefonos;
 
 	public Cliente() {
 		facturas = new ArrayList<Factura>();
-		direcciones = new ArrayList<Direccion>();
-		telefonos = new ArrayList<Telefono>();
+		// direcciones = new ArrayList<Direccion>();
+		// telefonos = new ArrayList<Telefono>();
 	}
 
 	public Long getId() {
@@ -83,29 +85,29 @@ public class Cliente implements Serializable {
 		facturas.add(factura);
 	}
 
-	public List<Direccion> getDirecciones() {
-		return direcciones;
-	}
-
-	public void setDirecciones(List<Direccion> direcciones) {
-		this.direcciones = direcciones;
-	}
-
-	public void addDireccion(Direccion direccion) {
-		direcciones.add(direccion);
-	}
-
-	public List<Telefono> getTelefonos() {
-		return telefonos;
-	}
-
-	public void setTelefonos(List<Telefono> telefonos) {
-		this.telefonos = telefonos;
-	}
-
-	public void addTelefono(Telefono telefono) {
-		telefonos.add(telefono);
-	}
+	// public List<Direccion> getDirecciones() {
+	// return direcciones;
+	// }
+	//
+	// public void setDirecciones(List<Direccion> direcciones) {
+	// this.direcciones = direcciones;
+	// }
+	//
+	// public void addDireccion(Direccion direccion) {
+	// direcciones.add(direccion);
+	// }
+	//
+	// public List<Telefono> getTelefonos() {
+	// return telefonos;
+	// }
+	//
+	// public void setTelefonos(List<Telefono> telefonos) {
+	// this.telefonos = telefonos;
+	// }
+	//
+	// public void addTelefono(Telefono telefono) {
+	// telefonos.add(telefono);
+	// }
 
 	public Direccion getDireccion() {
 		return direccion;

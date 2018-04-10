@@ -30,7 +30,8 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="nombre" class="col-sm-2 col-form-label">Nombre completo</label>
+						<label for="nombre" class="col-sm-2 col-form-label">Nombre
+							completo</label>
 						<div class="col-sm-6">
 							<input type="text" th:field="*{nombre}" class="form-control"
 								th:errorclass="'form-control alert-danger'" /> <small
@@ -42,11 +43,17 @@
 						<label for="direccion" class="col-sm-2 col-form-label">Dirección</label>
 						<div class="col-sm-6">
 							<input type="text" th:field="*{direccion}" class="form-control"
-								th:errorclass="'form-control alert-danger'" /> <small
-								class="form-text text-danger"
-								th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></small>
+								th:errorclass="'form-control alert-danger'" disabled='disabled' />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('direccion')}"
+								th:errors="*{direccion}"></small>
+						</div>
+						<div class="col-sm-2">
+							<input type="submit" th:value="${titulo_d}"
+								class="btn btn-secondary" />
 						</div>
 					</div>
+
 					<div class="form-group row">
 						<label for="empresa" class="col-sm-2 col-form-label">Empresa</label>
 						<div class="col-sm-6">
@@ -63,6 +70,7 @@
 								class="btn btn-secondary" />
 						</div>
 					</div>
+
 				</form>
 			</div>
 		</div>

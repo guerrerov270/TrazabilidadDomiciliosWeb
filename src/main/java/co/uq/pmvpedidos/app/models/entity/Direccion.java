@@ -1,17 +1,19 @@
 package co.uq.pmvpedidos.app.models.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "direcciones")
-public class Direccion {
+public class Direccion implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +34,8 @@ public class Direccion {
 	@OneToOne
 	private Zona zonaID;
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Cliente clienteD;
+	// @ManyToOne(fetch = FetchType.LAZY)
+	// private Cliente clienteD;
 
 	public Direccion() {
 
@@ -46,14 +48,14 @@ public class Direccion {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public Cliente getClienteD() {
-		return clienteD;
-	}
-
-	public void setClienteD(Cliente clienteD) {
-		this.clienteD = clienteD;
-	}
+	//
+	// public Cliente getClienteD() {
+	// return clienteD;
+	// }
+	//
+	// public void setClienteD(Cliente clienteD) {
+	// this.clienteD = clienteD;
+	// }
 
 	public String getTipoDireccion() {
 		return tipoDireccion;
@@ -109,6 +111,12 @@ public class Direccion {
 
 	public void setZonaID(Zona zonaID) {
 		this.zonaID = zonaID;
+	}
+
+	@Override
+	public String toString() {
+		return tipoDireccion + "/" + numero1 + "#" + numero2 + "-" + numero3 + " - " + tipoResidencia + " - "
+				+ "Barrio:" + barrio;
 	}
 
 }

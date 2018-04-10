@@ -27,7 +27,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
+import co.uq.pmvpedidos.app.models.entity.Direccion;
 import co.uq.pmvpedidos.app.models.service.IClienteService;
+import co.uq.pmvpedidos.app.models.service.IDireccionService;
 import co.uq.pmvpedidos.app.util.paginator.PageRender;
 
 @Controller
@@ -36,6 +38,9 @@ public class ClienteController {
 
 	@Autowired
 	private IClienteService clienteService;
+
+	@Autowired
+	private IDireccionService direccionService;
 
 	@GetMapping(value = "/ver/{id}")
 	public String ver(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
@@ -78,10 +83,13 @@ public class ClienteController {
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
 		Cliente cliente = null;
+		Direccion direccion = null;
 
 		if (id > 0) {
 			cliente = clienteService.findOne(id);
-			if (cliente == null) {
+			direccion = direccionService.findOne(cliente.getDireccion().getId());
+
+			if (cliente == null || direccion == null) {
 				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
 				return "redirect:/listar";
 			}
@@ -91,12 +99,14 @@ public class ClienteController {
 		}
 		model.put("cliente", cliente);
 		model.put("titulo", "Editar Cliente");
+		model.put("direccion", direccion);
+		model.put("titulo_d", "Editar Dirección");
 		return "form";
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash,
-			SessionStatus status) {
+	public String guardar(@Valid Cliente cliente, @Valid Direccion direccion, BindingResult result, Model model,
+			RedirectAttributes flash, SessionStatus status) {
 
 		if (result.hasErrors()) {
 			model.addAttribute("titulo", "Formulario de Cliente");
@@ -106,6 +116,7 @@ public class ClienteController {
 		String mensajeFlash = (cliente.getId() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
 
 		clienteService.save(cliente);
+		direccionService.save(direccion);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:listar";
