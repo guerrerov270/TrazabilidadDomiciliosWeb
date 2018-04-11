@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head"></head>
 <body>
@@ -41,7 +41,7 @@
 							<td th:text="${factura.creado}"></td>
 							<td th:text="${factura.entregado}"></td>
 							<td><select class="form-control" id="estados" name="estados"
-								onchange="myFunction()">
+								onchange="myFunction(factura.id)">
 									<option value="">Seleccione uno</option>
 									<option th:each="estado : ${estados}"
 										th:value="${estado.descripcion}"
@@ -60,8 +60,9 @@
 	<div>
 		<p id="demo"></p>
 		<script>
-			function myFunction() {
+			function myFunction(id) {
 				var x = document.getElementById("estados").value;
+				
 			}
 		</script>
 	</div>
