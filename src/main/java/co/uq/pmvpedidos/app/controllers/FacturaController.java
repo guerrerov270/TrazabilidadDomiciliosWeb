@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
@@ -159,6 +160,12 @@ public class FacturaController {
 	public void getEstados(Model model) {
 		List<Estado> estados = facturaService.findAllStates();
 		model.addAttribute("estados", estados);
+	}
+
+	@RequestMapping(value = { "/buscarcliente" }, method = RequestMethod.GET)
+	public String buscaCliente() {
+
+		return "clientes";
 	}
 
 }

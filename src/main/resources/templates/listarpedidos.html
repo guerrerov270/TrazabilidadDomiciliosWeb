@@ -11,17 +11,18 @@
 		<div class="card bg-light">
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
-
-				<div class="input-group mb-6">
-					<input id="telefono" type="text" class="form-control"
-						placeholder="Número de teléfono" aria-label="Número de teléfono"
-						aria-describedby="basic-addon2" />
-					<div class="input-group-append">
-						<button class="btn btn-outline-secondary" type="submit">
-							Buscar <span class="glyphicon glyphicon-search"></span>
-						</button>
+				<form th:action="@{/buscarcliente}" method="POST">
+					<div class="input-group mb-6">
+						<input id="telefono" type="text" class="form-control"
+							placeholder="Número de teléfono" aria-label="Número de teléfono"
+							aria-describedby="basic-addon2" />
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="submit">
+								Buscar <span class="glyphicon glyphicon-search"></span>
+							</button>
+						</div>
 					</div>
-				</div>
+				</form>
 
 				<div th:if="${#lists.isEmpty(facturas)}"
 					class="alert alert-info my-4"

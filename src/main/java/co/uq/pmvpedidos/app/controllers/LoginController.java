@@ -56,7 +56,7 @@ public class LoginController {
 
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
-			return "redirect:/login";
+			return "redirect:/admin/home";
 
 		}
 		return "registration";
