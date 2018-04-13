@@ -160,4 +160,5 @@ public class FacturaController {
 		List<Estado> estados = facturaService.findAllStates();
 		model.addAttribute("estados", estados);
 	}
+
 }

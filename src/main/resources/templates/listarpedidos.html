@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head"></head>
 <body>
@@ -11,16 +12,24 @@
 			<div class="card-header" th:text="${titulo}"></div>
 			<div class="card-body">
 
-				<h4 class="card-title">
-					<a class="btn btn-primary btn-xs">Crear pedido</a>
-				</h4>
+				<div class="input-group mb-6">
+					<input id="telefono" type="text" class="form-control"
+						placeholder="Número de teléfono" aria-label="Número de teléfono"
+						aria-describedby="basic-addon2" />
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="submit">
+							Buscar <span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+				</div>
+
 				<div th:if="${#lists.isEmpty(facturas)}"
 					class="alert alert-info my-4"
 					th:text="'No hay pedidos registrados aún'"></div>
 
 				<table th:if="${not #lists.isEmpty(facturas)}"
 					class="table table-bordered table-striped my-4">
-					<thead class="thead-inverse">
+					<thead class="bg-dark text-white">
 						<tr>
 							<th>ID</th>
 							<th>Cliente</th>
@@ -41,7 +50,7 @@
 							<td th:text="${factura.creado}"></td>
 							<td th:text="${factura.entregado}"></td>
 							<td><select class="form-control" id="estados" name="estados"
-								onchange="myFunction(factura.id)">
+								onchange="">
 									<option value="">Seleccione uno</option>
 									<option th:each="estado : ${estados}"
 										th:value="${estado.descripcion}"
@@ -57,15 +66,7 @@
 
 
 	</div>
-	<div>
-		<p id="demo"></p>
-		<script>
-			function myFunction(id) {
-				var x = document.getElementById("estados").value;
-				
-			}
-		</script>
-	</div>
+
 
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>

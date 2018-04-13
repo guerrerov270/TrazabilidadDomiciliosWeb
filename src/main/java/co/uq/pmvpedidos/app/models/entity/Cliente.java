@@ -44,7 +44,7 @@ public class Cliente implements Serializable {
 	private String empresa;
 
 	@Column(name = "create_at")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 

@@ -59,7 +59,7 @@ public class ClienteController {
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
-		Pageable pageRequest = new PageRequest(page, 50);
+		Pageable pageRequest = new PageRequest(page, 100);
 
 		Page<Cliente> clientes = clienteService.findAll(pageRequest);
 
