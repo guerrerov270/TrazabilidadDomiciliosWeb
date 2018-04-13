@@ -3,10 +3,8 @@
 <head th:fragment="head">
 <meta charset="UTF-8" />
 <title th:text="${titulo}"></title>
-<link rel="stylesheet"
-	th:href="@{/css/bootstrap.min.css}" />
-<link rel="stylesheet"
-	th:href="@{/css/jquery-ui.min.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
 </head>
 <body>
 
@@ -19,20 +17,34 @@
 			</button>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav mr-auto">
-	<li class="nav-item active"><a class="nav-link" th:href="@{/home}">Home</a></li>
-	<li class="nav-item"><a class="nav-link" th:href="@{/factura/listarpedidos}">Pedidos</a></li>
-	<li class="nav-item"><a class="nav-link" th:href="@{/listarProductos}">Productos</a></li>
-	<li class="nav-item"><a class="nav-link" href="#about" th:href="@{/listar}">Clientes</a></li>
+					<li class="nav-item active"><a class="nav-link"
+						th:href="@{/home}">Home</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/factura/listarpedidos}">Pedidos</a></li>
+					<li class="nav-item"><a class="nav-link"
+						th:href="@{/listarProductos}">Productos</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/listar}">Clientes</a></li>
+					<li class="nav-item"><form th:action="@{/logout}" method="get">
+							<button class="btn  btn-outline-danger btn-block mb-3 mb-md-0 ml-md-3"
+								name="registration" type="Submit">Salir</button>
+						</form></li>
+
+
 				</ul>
 			</div>
 		</nav>
-		
-		<div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
-		<div class="alert alert-danger" th:if="${error != null}" th:text="${error}"></div>
-		<div class="alert alert-warning" th:if="${warning != null}" th:text="${warning}"></div>
-		<div class="alert alert-info" th:if="${info != null}" th:text="${info}"></div>
+
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}"
+			th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}"
+			th:text="${info}"></div>
 	</header>
-	
+
 	<div class="container"></div>
 
 	<footer th:fragment="footer" class="container">
@@ -42,7 +54,7 @@
 			Powered by <a href="https://projects.spring.io/spring-boot/">Spring
 				Boot</a> y <a href="http://www.thymeleaf.org">Thymeleaf</a>.
 		</p>
-		
+
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Bootstrap JS -->
 		<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
