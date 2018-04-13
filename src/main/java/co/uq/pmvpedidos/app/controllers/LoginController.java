@@ -74,4 +74,16 @@ public class LoginController {
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public ModelAndView homeNotAdmin() {
+		ModelAndView modelAndView = new ModelAndView();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userService.findUserByEmail(auth.getName());
+		modelAndView.addObject("userName",
+				"Bienvenido " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+		modelAndView.addObject("adminMessage", "Empleado");
+		modelAndView.setViewName("/home");
+		return modelAndView;
+	}
+
 }

@@ -15,10 +15,10 @@
 			<a class="navbar-brand" th:href="@{/}">Spring Boot</a>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item"><form th:action="@{/}" method="get">
+					<!-- <li class="nav-item"><form th:action="@{/}" method="get">
 							<button class="btn btn-md btn-outline-warning btn-block"
 								type="Submit">Ya tengo una cuenta!</button>
-						</form></li>
+						</form></li> -->
 
 
 				</ul>
@@ -41,7 +41,7 @@
 
 	<div class="container py-4">
 		<div class="card bg-light">
-			<div class="card-header" th:text="Registrarse"></div>
+			<div class="card-header" th:text="#{registration.title}"></div>
 			<div class="card-body">
 
 				<form autocomplete="off" action="#" th:action="@{/registration}"
