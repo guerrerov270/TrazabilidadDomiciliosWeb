@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.User;
 import co.uq.pmvpedidos.app.models.service.UserService;
@@ -37,23 +38,28 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
+	public String createNewUser(@Valid User user, BindingResult bindingResult, RedirectAttributes flash) {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
-			bindingResult.rejectValue("email", "error.user",
-					"There is already a user registered with the email provided");
+			// bindingResult.rejectValue("email", "error.user", "Ya existe un usuario
+			// registrado con este Email");
+			flash.addFlashAttribute("error", "Ya existe un usuario registrado con este Email");
+			return "redirect:/registration";
 		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("registration");
 		} else {
 			userService.saveUser(user);
-			modelAndView.addObject("successMessage", "User has been registered successfully");
+			modelAndView.addObject("successMessage", "Usuario registrado con éxito");
+			flash.addFlashAttribute("success", "Usuario registrado con éxito");
+
 			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("registration");
+			return "redirect:/login";
 
 		}
-		return modelAndView;
+		return "registration";
 	}
 
 	@RequestMapping(value = "/admin/home", method = RequestMethod.GET)
@@ -62,8 +68,8 @@ public class LoginController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByEmail(auth.getName());
 		modelAndView.addObject("userName",
-				"Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
+				"Bienvenido " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+		modelAndView.addObject("adminMessage", "Administrador");
 		modelAndView.setViewName("/admin/home");
 		return modelAndView;
 	}

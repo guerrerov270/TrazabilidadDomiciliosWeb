@@ -26,7 +26,7 @@
 				</ul>
 			</div>
 		</nav>
-		<!-- 
+
 		<div class="alert alert-success" th:if="${success != null}"
 			th:text="${success}"></div>
 		<div class="alert alert-danger" th:if="${error != null}"
@@ -34,11 +34,14 @@
 		<div class="alert alert-warning" th:if="${warning != null}"
 			th:text="${warning}"></div>
 		<div class="alert alert-info" th:if="${info != null}"
-			th:text="${info}"></div> -->
+			th:text="${info}"></div>
 	</header>
 	<!-- <form th:action="@{/registration}" method="get">
 		<button class="btn btn-md btn-warning btn-block" type="Submit">Registrarse</button>
 	</form> -->
+	<div align="left" th:if="${param.error}">
+		<div class="alert alert-danger" th:text="#{login.error}"></div>
+	</div>
 
 	<div class="container py-4">
 		<div class="card bg-light">
@@ -59,11 +62,6 @@
 							name="password" class="form-control" />
 					</div>
 
-					<div align="center" th:if="${param.error}">
-						<p style="font-size: 20; color: #FF1C19;">Correo electrónico o
-							contraseña inválidos, por favor verifique sus credenciales</p>
-					</div>
-
 					<div class="col-md-6 col-md-offset-3">
 						<button class="btn btn-lg btn-primary btn-block" name="Submit"
 							value="Login" type="Submit" th:text="Ingresar"></button>
@@ -72,6 +70,6 @@
 			</div>
 		</div>
 	</div>
-
+	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>
