@@ -30,6 +30,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
+import co.uq.pmvpedidos.app.models.entity.Cuenta;
+import co.uq.pmvpedidos.app.models.entity.Direccion;
 import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.ItemFactura;
@@ -162,10 +164,26 @@ public class FacturaController {
 		model.addAttribute("estados", estados);
 	}
 
-	@RequestMapping(value = { "/buscarcliente" }, method = RequestMethod.GET)
-	public String buscaCliente() {
+	@RequestMapping(value = "listarpedidos")
+	public String crear(Map<String, Object> model) {
 
-		return "clientes";
+		Cliente cliente = new Cliente();
+		model.put("cliente", cliente);
+		return "listarpedidos";
+	}
+
+	@RequestMapping(value = "/listarpedidos", method = RequestMethod.POST)
+	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash,
+			SessionStatus status) {
+
+		if (result.hasErrors()) {
+			flash.addFlashAttribute("error", "Error en procesamiento del formulario");
+			return "listarpedidos";
+		}
+
+		status.setComplete();
+		flash.addFlashAttribute("success", "Procesamiento del formulario éxitoso");
+		return "redirect:/factura/form/";
 	}
 
 }
