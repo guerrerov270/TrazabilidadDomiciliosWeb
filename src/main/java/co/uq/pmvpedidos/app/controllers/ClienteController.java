@@ -29,10 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
-import co.uq.pmvpedidos.app.models.entity.Direccion;
-import co.uq.pmvpedidos.app.models.entity.Zona;
 import co.uq.pmvpedidos.app.models.service.IClienteService;
-import co.uq.pmvpedidos.app.models.service.IDireccionService;
 import co.uq.pmvpedidos.app.util.paginator.PageRender;
 
 @Controller
@@ -41,9 +38,6 @@ public class ClienteController {
 
 	@Autowired
 	private IClienteService clienteService;
-
-	@Autowired
-	private IDireccionService direccionService;
 
 	@GetMapping(value = "/ver/{id}")
 	public String ver(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
@@ -143,10 +137,10 @@ public class ClienteController {
 	// model.addAttribute("direcciones", direcciones);
 	// }
 
-	@ModelAttribute("direccion")
-	public void getDireccion(Model model) {
-		Direccion direccion = new Direccion();
-		model.addAttribute("direccion", direccion);
-	}
+	// @ModelAttribute("direccion")
+	// public void getDireccion(Model model) {
+	// Direccion direccion = new Direccion();
+	// model.addAttribute("direccion", direccion);
+	// }
 
 }

@@ -31,7 +31,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
 import co.uq.pmvpedidos.app.models.entity.Cuenta;
-import co.uq.pmvpedidos.app.models.entity.Direccion;
 import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.ItemFactura;

@@ -48,10 +48,6 @@
 								th:if="${#fields.hasErrors('direccion')}"
 								th:errors="*{direccion}"></small>
 						</div>
-						<div class="col-sm-2">
-							<a th:href="@{/formd/} + ${direccion.id}"
-								class="btn btn-secondary">Editar Dirección</a>
-						</div>
 					</div>
 
 					<div class="form-group row">
