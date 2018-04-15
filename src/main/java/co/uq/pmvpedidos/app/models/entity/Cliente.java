@@ -38,8 +38,9 @@ public class Cliente implements Serializable {
 	private String nombre;
 
 	@NotEmpty
-	@OneToOne
-	private Direccion direccion;
+	private String direccion;
+
+	private String Zona;
 
 	private String empresa;
 
@@ -53,11 +54,13 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Factura> facturas;
 
-//	@OneToMany(mappedBy = "clienteD", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<Direccion> direcciones;
-//
-//	@OneToMany(mappedBy = "clienteT", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<Telefono> telefonos;
+	// @OneToMany(mappedBy = "clienteD", fetch = FetchType.LAZY, cascade =
+	// CascadeType.ALL, orphanRemoval = true)
+	// private List<Direccion> direcciones;
+	//
+	// @OneToMany(mappedBy = "clienteT", fetch = FetchType.LAZY, cascade =
+	// CascadeType.ALL, orphanRemoval = true)
+	// private List<Telefono> telefonos;
 
 	public Cliente() {
 		facturas = new ArrayList<Factura>();
@@ -109,14 +112,6 @@ public class Cliente implements Serializable {
 	// telefonos.add(telefono);
 	// }
 
-	public Direccion getDireccion() {
-		return direccion;
-	}
-
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
-
 	public String getTelefono() {
 		return telefono;
 	}
@@ -160,6 +155,22 @@ public class Cliente implements Serializable {
 	@Override
 	public String toString() {
 		return nombre + "-" + telefono;
+	}
+
+	public String getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getZona() {
+		return Zona;
+	}
+
+	public void setZona(String zona) {
+		Zona = zona;
 	}
 
 }

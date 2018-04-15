@@ -31,8 +31,7 @@ public class Direccion implements Serializable {
 
 	private String barrio;
 
-	@OneToOne
-	private Zona zonaID;
+	private String zonaID;
 
 	public Direccion() {
 
@@ -100,14 +99,6 @@ public class Direccion implements Serializable {
 
 	public void setBarrio(String barrio) {
 		this.barrio = barrio;
-	}
-
-	public Zona getZonaID() {
-		return zonaID;
-	}
-
-	public void setZonaID(Zona zonaID) {
-		this.zonaID = zonaID;
 	}
 
 	// @Override

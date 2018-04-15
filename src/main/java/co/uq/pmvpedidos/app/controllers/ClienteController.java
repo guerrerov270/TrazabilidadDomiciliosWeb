@@ -137,9 +137,16 @@ public class ClienteController {
 		return "redirect:/listar";
 	}
 
-	@ModelAttribute("direcciones")
-	public void getDirecciones(Model model) {
-		List<Direccion> direcciones = direccionService.findAll();
-		model.addAttribute("direcciones", direcciones);
+	// @ModelAttribute("direcciones")
+	// public void getDirecciones(Model model) {
+	// List<Direccion> direcciones = direccionService.findAll();
+	// model.addAttribute("direcciones", direcciones);
+	// }
+
+	@ModelAttribute("direccion")
+	public void getDireccion(Model model) {
+		Direccion direccion = new Direccion();
+		model.addAttribute("direccion", direccion);
 	}
+
 }
