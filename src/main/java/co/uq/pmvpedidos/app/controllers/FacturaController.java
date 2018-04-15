@@ -170,13 +170,27 @@ public class FacturaController {
 		model.addAttribute("cliente", cliente);
 	}
 
+	// @RequestMapping(value = "/listarpedidos", method = RequestMethod.POST)
+	// public String guardar(@RequestParam("id") Long id, Map<String, Object> model,
+	// RedirectAttributes flash) {
+	//
+	// Cliente cliente = clienteService.findOne(id);
+	// if (cliente == null) {
+	// flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
+	// return "redirect:/listarpedidos";
+	// }
+	//
+	// model.put("cliente", cliente);
+	// return "ver";
+	// }
+
 	@RequestMapping(value = "/listarpedidos", method = RequestMethod.POST)
 	public String guardar(@RequestParam("id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
 		Cliente cliente = clienteService.findOne(id);
-		if (cliente == null) {
+		if (!(clienteService.exists(id))) {
 			flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
-			return "redirect:/listarpedidos";
+			return "redirect:/form";
 		}
 
 		model.put("cliente", cliente);

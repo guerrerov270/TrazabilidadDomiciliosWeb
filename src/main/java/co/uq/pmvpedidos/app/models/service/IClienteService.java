@@ -19,6 +19,8 @@ public interface IClienteService {
 
 	public Cliente findOne(Long id);
 
+	public boolean exists(Long id);
+
 	public void delete(Long id);
 
 	public List<Producto> findByNombre(String term);

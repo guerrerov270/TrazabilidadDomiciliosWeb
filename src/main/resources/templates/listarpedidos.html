@@ -16,17 +16,9 @@
 					<div class="input-group mb-6">
 						<input id="id" type="number" th:field="*{id}" class="form-control"
 							placeholder="Número de teléfono" aria-label="Número de teléfono"
-							aria-describedby="basic-addon2" /> <a
-							class="btn btn-success btn-xs" type="submit"
-							th:text="'Crear pedido'" th:href="@{/factura/listarpedidos}"></a>
+							aria-describedby="basic-addon2" />
 					</div>
 				</form>
-
-				<div>
-					<a class="btn btn-primary btn-xs" th:text="${cliente.nombre}"></a>
-				</div>
-
-
 
 				<div th:if="${#lists.isEmpty(facturas)}"
 					class="alert alert-info my-4"

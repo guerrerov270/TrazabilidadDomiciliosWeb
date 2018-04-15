@@ -20,7 +20,7 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Autowired
 	private IClienteDao clienteDao;
-	
+
 	@Autowired
 	private IProductoDao productoDao;
 
@@ -81,14 +81,20 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Producto> findByNombre(String term) {
-		return productoDao.findByNombreLikeIgnoreCase("%"+term+"%");
+		return productoDao.findByNombreLikeIgnoreCase("%" + term + "%");
 	}
 
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public Producto findProductoById(Long id) {
 		// TODO Auto-generated method stub
 		return productoDao.findOne(id);
+	}
+
+	@Override
+	public boolean exists(Long id) {
+		// TODO Auto-generated method stub
+		return clienteDao.exists(id);
 	}
 
 }
