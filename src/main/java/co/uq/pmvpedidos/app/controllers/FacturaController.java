@@ -164,26 +164,23 @@ public class FacturaController {
 		model.addAttribute("estados", estados);
 	}
 
-	@RequestMapping(value = "listarpedidos")
-	public String crear(Map<String, Object> model) {
-
+	@ModelAttribute("cliente")
+	public void clienteModel(Model model) {
 		Cliente cliente = new Cliente();
-		model.put("cliente", cliente);
-		return "listarpedidos";
+		model.addAttribute("cliente", cliente);
 	}
 
 	@RequestMapping(value = "/listarpedidos", method = RequestMethod.POST)
-	public String guardar(@Valid Cliente cliente, BindingResult result, Model model, RedirectAttributes flash,
-			SessionStatus status) {
+	public String guardar(@RequestParam("id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
-		if (result.hasErrors()) {
-			flash.addFlashAttribute("error", "Error en procesamiento del formulario");
-			return "listarpedidos";
+		Cliente cliente = clienteService.findOne(id);
+		if (cliente == null) {
+			flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
+			return "redirect:/listarpedidos";
 		}
 
-		status.setComplete();
-		flash.addFlashAttribute("success", "Procesamiento del formulario éxitoso");
-		return "redirect:/factura/form/";
+		model.put("cliente", cliente);
+		return "ver";
 	}
 
 }
