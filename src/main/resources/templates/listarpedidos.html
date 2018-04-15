@@ -13,6 +13,8 @@
 
 				<form th:action="@{/factura/listarpedidos}" th:object="${cliente}"
 					method="post">
+					<label for="telefono" class="form-label">Ingrese un número
+						de teléfono para crear un nuevo pedido:</label>
 					<div class="input-group mb-6">
 						<input id="id" type="number" th:field="*{id}" class="form-control"
 							placeholder="Número de teléfono" aria-label="Número de teléfono"

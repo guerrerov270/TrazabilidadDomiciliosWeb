@@ -7,13 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.uq.pmvpedidos.app.models.dao.IDireccionDao;
+import co.uq.pmvpedidos.app.models.dao.IZonaDao;
 import co.uq.pmvpedidos.app.models.entity.Direccion;
+import co.uq.pmvpedidos.app.models.entity.Estado;
+import co.uq.pmvpedidos.app.models.entity.Zona;
 
 @Service
 public class DireccionServiceImpl implements IDireccionService {
 
 	@Autowired
 	private IDireccionDao direccionDao;
+
+	@Autowired
+	private IZonaDao zonaDao;
 
 	@Override
 	public List<Direccion> findAll() {
@@ -41,6 +47,12 @@ public class DireccionServiceImpl implements IDireccionService {
 		// TODO Auto-generated method stub
 		direccionDao.delete(id);
 
+	}
+
+	@Override
+	public List<Zona> findAllZonas() {
+		// TODO Auto-generated method stub
+		return (List<Zona>) zonaDao.findAll();
 	}
 
 }

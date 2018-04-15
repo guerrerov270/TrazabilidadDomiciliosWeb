@@ -49,8 +49,8 @@
 								th:errors="*{direccion}"></small>
 						</div>
 						<div class="col-sm-2">
-							<input type="submit" th:value="${titulo_d}"
-								class="btn btn-secondary" />
+							<a th:href="@{/formd/} + ${direccion.id}"
+								class="btn btn-secondary">Editar Dirección</a>
 						</div>
 					</div>
 

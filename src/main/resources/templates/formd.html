@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/layout :: head"></head>
+<head th:replace="layout/layout :: head">
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#zonas > option[value="*{zonaID}"]').attr('selected', 'selected');
+	});
+</script>
+</head>
 <body>
 
 	<header th:replace="layout/layout :: header"></header>
@@ -18,7 +24,7 @@
 					</ul>
 				</div>
 
-				<form th:action="@{/form}" th:object="${direccion}" method="post"
+				<form th:action="@{/formd}" th:object="${direccion}" method="post"
 					enctype="multipart/form-data">
 					<div class="form-group row">
 						<label for="tipoDireccion" class="col-sm-2 col-form-label">Tipo
@@ -86,7 +92,21 @@
 					</div>
 
 					<div class="form-group row">
-						<label for="zonaID" class="col-sm-2 col-form-label">Zona</label>
+						<label for="zonaID" class="col-sm-2 col-form-label">Zonas
+							disponibles</label>
+						<div class="col-sm-6">
+							<select class="form-control" id="zonas" name="zonas" onchange="">
+								<option value="">Seleccione una</option>
+								<option th:each="zona : ${zonas}" th:value="${zona.nombre}"
+									selected="selected" th:text="${zona.nombre}"></option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group row">
+						<label for="zonaID2" class="col-sm-2 col-form-label">Zona
+							seleccionada</label>
 						<div class="col-sm-6">
 							<input type="text" class="form-control" th:field="*{zonaID}"
 								th:errorclass="'form-control alert-danger'" /> <small

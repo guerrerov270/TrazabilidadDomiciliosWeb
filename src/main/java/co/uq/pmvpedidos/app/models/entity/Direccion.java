@@ -34,9 +34,6 @@ public class Direccion implements Serializable {
 	@OneToOne
 	private Zona zonaID;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// private Cliente clienteD;
-
 	public Direccion() {
 
 	}
@@ -113,10 +110,19 @@ public class Direccion implements Serializable {
 		this.zonaID = zonaID;
 	}
 
+	// @Override
+	// public String toString() {
+	// return "Direccion [id=" + id + ", tipoDireccion=" + tipoDireccion + ",
+	// numero1=" + numero1 + ", numero2="
+	// + numero2 + ", numero3=" + numero3 + ", tipoResidencia=" + tipoResidencia +
+	// ", barrio=" + barrio
+	// + ", zonaID=" + zonaID + "]";
+	// }
+
 	@Override
 	public String toString() {
 		return tipoDireccion + "/" + numero1 + "#" + numero2 + "-" + numero3 + " - " + tipoResidencia + " - "
-				+ "Barrio:" + barrio;
+				+ "Barrio:" + barrio + "- " + "zonaID: " + zonaID;
 	}
 
 }
