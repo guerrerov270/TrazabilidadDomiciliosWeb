@@ -75,7 +75,7 @@ public class ProductoController {
 	@RequestMapping(value = "/listarProductos", method = RequestMethod.GET)
 	public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
 
-		Pageable pageRequest = new PageRequest(page, 10);
+		Pageable pageRequest = new PageRequest(page, 100);
 
 		Page<Producto> productos = productoService.findAll(pageRequest);
 
@@ -94,7 +94,7 @@ public class ProductoController {
 		model.put("titulo", "Crear producto");
 		return "formproducto";
 	}
-	
+
 	@RequestMapping(value = "/formproducto/{id}")
 	public String editar(@PathVariable(value = "id") Long id, Map<String, Object> model, RedirectAttributes flash) {
 
@@ -114,7 +114,7 @@ public class ProductoController {
 		model.put("titulo", "Editar producto");
 		return "formproducto";
 	}
-	
+
 	@RequestMapping(value = "/formproducto", method = RequestMethod.POST)
 	public String guardar(@Valid Producto producto, BindingResult result, Model model,
 			@RequestParam("file") MultipartFile foto, RedirectAttributes flash, SessionStatus status) {
@@ -153,7 +153,7 @@ public class ProductoController {
 		flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:listarProductos";
 	}
-	
+
 	@RequestMapping(value = "/eliminarproducto/{id}")
 	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
@@ -170,7 +170,5 @@ public class ProductoController {
 		}
 		return "redirect:/listarProductos";
 	}
-	
-	
 
 }
