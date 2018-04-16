@@ -13,7 +13,10 @@
 <body>
 	<header th:fragment="header">
 		<nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
-			<a class="navbar-brand" th:href="@{/}">Spring Boot</a>
+			<a class="navbar-brand" th:href="@{/factura/listarpedidos}"> <img
+				th:src="@{/images/logo.png}" width="30" height="30"
+				class="d-inline-block align-top" alt=""> La Chispa al Carbón
+			</a>
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav mr-auto">
 					<!-- <li class="nav-item"><form th:action="@{/registration}"
@@ -46,8 +49,8 @@
 	<div class="container py-4">
 		<div class="card bg-light">
 			<div class="card-header" th:text="Bienvenido"></div>
-			<div class="card-body">
-				<img th:src="@{/images/login.jpg}"
+			<div class="card-body" align="center">
+				<img th:src="@{/images/chispa.png}"
 					class="img-responsive center-block" width="300" height="300"
 					alt="Logo" />
 				<form th:action="@{/login}" method="POST" class="form-signin">
@@ -70,6 +73,15 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
+	<!-- <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+	<form th:action="@{/registration}" method="get">
+		<button class="btn btn-md btn-outline-warning btn-block" type="Submit">Registrar
+			usuario</button> </form>-->
+
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>

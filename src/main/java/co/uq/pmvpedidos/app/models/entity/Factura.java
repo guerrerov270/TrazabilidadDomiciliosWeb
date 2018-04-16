@@ -30,12 +30,12 @@ public class Factura implements Serializable {
 
 	private String observacion;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date creado;
 
 	private String estado;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date entregado;
 
 	@ManyToOne(fetch = FetchType.LAZY)

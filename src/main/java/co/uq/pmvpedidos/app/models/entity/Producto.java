@@ -35,15 +35,6 @@ public class Producto implements Serializable {
 
 	private String foto;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "create_at")
-	private Date createAt;
-
-	@PrePersist
-	public void prePersist() {
-		createAt = new Date();
-	}
-
 	public Long getId() {
 		return id;
 	}
@@ -74,14 +65,6 @@ public class Producto implements Serializable {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
 	}
 
 	public String getDescripcion() {

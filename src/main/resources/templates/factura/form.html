@@ -23,7 +23,7 @@
 							th:text="'Cliente'"></label>
 						<div class="col-sm-6">
 							<input name="cliente"
-								th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.telefono}"
+								th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.id}"
 								class="form-control" disabled='disabled' />
 						</div>
 					</div>
@@ -61,7 +61,9 @@
 						<tbody>
 						</tbody>
 					</table>
-					<h5>Total <span class="badge badge-secondary" id="gran_total">0</span></h5>
+					<h5>
+						Total <span class="badge badge-secondary" id="gran_total">0</span>
+					</h5>
 
 					<div class="form-group row">
 						<div class="col-sm-6">

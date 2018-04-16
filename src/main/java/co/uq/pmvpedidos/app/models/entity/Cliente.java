@@ -28,11 +28,10 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotEmpty
-	private String telefono;
+	// @NotEmpty
+	// private String telefono;
 
 	@NotEmpty
 	private String nombre;
@@ -40,13 +39,13 @@ public class Cliente implements Serializable {
 	@NotEmpty
 	private String direccion;
 
-	private String Zona;
-
 	private String empresa;
+
+	private String zona;
 
 	@Column(name = "create_at")
 	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	// @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 
 	private String resenia;
@@ -112,13 +111,13 @@ public class Cliente implements Serializable {
 	// telefonos.add(telefono);
 	// }
 
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
+	// public String getTelefono() {
+	// return telefono;
+	// }
+	//
+	// public void setTelefono(String telefono) {
+	// this.telefono = telefono;
+	// }
 
 	public Date getCreateAt() {
 		return createAt;
@@ -154,7 +153,7 @@ public class Cliente implements Serializable {
 
 	@Override
 	public String toString() {
-		return nombre + "-" + telefono;
+		return nombre + "-" + id;
 	}
 
 	public String getDireccion() {
@@ -166,11 +165,11 @@ public class Cliente implements Serializable {
 	}
 
 	public String getZona() {
-		return Zona;
+		return zona;
 	}
 
 	public void setZona(String zona) {
-		Zona = zona;
+		this.zona = zona;
 	}
 
 }
