@@ -8,19 +8,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import co.uq.pmvpedidos.app.models.service.IUploadFileService;
 
 @SpringBootApplication
-public class SpringBootPmvPedidosApplication implements CommandLineRunner{
+public class SpringBootPmvPedidosApplication {
 
 	@Autowired
 	IUploadFileService uploadFileService;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootPmvPedidosApplication.class, args);
 	}
-	
-	@Override
-	public void run(String... args) throws Exception {
-		// TODO Auto-generated method stub
-		uploadFileService.deleteAll();
-		uploadFileService.init();
-	}
+
+	// @Override // implements CommandLineRunner //Borrar uploads al inicio
+	// public void run(String... args) throws Exception {
+	// // TODO Auto-generated method stub
+	// uploadFileService.deleteAll();
+	// uploadFileService.init();
+	// }
 }
