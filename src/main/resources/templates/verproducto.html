@@ -13,7 +13,7 @@
 
 
 				<img th:if="${#strings.length(producto.foto) > 0}"
-					class="img-thumbnail rounded float-left" style="max-width: 25%;"
+					class="img-thumbnail rounded float-left" style="max-width: 50%;"
 					th:src="@{'/uploads/' + ${producto.foto}}"
 					th:alt="${producto.foto}" />
 
@@ -28,7 +28,8 @@
 
 			<div>
 				<a class="btn btn-primary btn-xs"
-					th:href="@{/formproducto/} + ${producto.id}" th:text="'Editar producto'"></a>
+					th:href="@{/formproducto/} + ${producto.id}"
+					th:text="'Editar producto'"></a>
 			</div>
 		</div>
 
