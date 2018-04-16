@@ -15,6 +15,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
 
 @Entity
 @Table(name = "productos")
@@ -31,6 +33,7 @@ public class Producto implements Serializable {
 	private String descripcion;
 
 	@NotNull
+	@NumberFormat(style = Style.CURRENCY)
 	private Double precio;
 
 	private String foto;
