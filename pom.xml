@@ -7,7 +7,7 @@
 	<groupId>co.uq.spring-boot-pmv-pedidos.app</groupId>
 	<artifactId>spring-boot-pmv-pedidos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>spring-boot-pmv-pedidos</name>
 	<description>Prototipo mínimo viable para una plataforma de gestión de la trazabilidad de pedidos a domicilio</description>
@@ -69,7 +69,26 @@
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/br.com.ingenieux/beanstalker -->
+		<dependency>
+			<groupId>br.com.ingenieux</groupId>
+			<artifactId>beanstalker</artifactId>
+			<version>1.5.0</version>
+			<type>pom</type>
+		</dependency>
 
 		<!-- Agregadas manualmente -->
 		<dependency>
