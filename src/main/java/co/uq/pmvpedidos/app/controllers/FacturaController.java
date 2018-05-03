@@ -3,6 +3,7 @@ package co.uq.pmvpedidos.app.controllers;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -205,6 +207,13 @@ public class FacturaController {
 
 		model.put("cliente", cliente);
 		return "ver";
+	}
+
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public Estado getPeticion(@RequestBody Estado e) {
+		JOptionPane.showMessageDialog(null, e.getDescripcion());
+		return e;
 	}
 
 }
