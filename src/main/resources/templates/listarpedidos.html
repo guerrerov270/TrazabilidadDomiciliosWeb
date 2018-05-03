@@ -17,8 +17,8 @@
 						teléfono para crear un nuevo pedido:</label>
 					<div class="input-group mb-6">
 						<input id="id" type="number" th:field="*{id}" class="form-control"
-							placeholder="Número de teléfono"
-							aria-label="Número de teléfono" aria-describedby="basic-addon2" />
+							placeholder="Número de teléfono" aria-label="Número de teléfono"
+							aria-describedby="basic-addon2" />
 					</div>
 				</form>
 
@@ -26,7 +26,7 @@
 					class="alert alert-info my-4"
 					th:text="'No hay pedidos registrados aún'"></div>
 
-				<p id="demoestado"></p>
+				<span id="demoestado"></span>
 				<p id="demouser"></p>
 
 				<table th:if="${not #lists.isEmpty(facturas)}"
@@ -77,15 +77,13 @@
 	</div>
 	<script>
 		function cambioEstado() {
-			var x = document.getElementById("estados").value;
-			document.getElementById("demoestado").innerHTML = "Seleccionado: "
-					+ x;
+			var estado = $("#estados").val();
+			alert(estado);
 		}
 
 		function cambioUser() {
-			var y = document.getElementById("users").value;
-			document.getElementById("demouser").innerHTML = "Seleccionado: "
-					+ y;
+			var user = $("#users").val();
+			alert(user);
 		}
 	</script>
 
