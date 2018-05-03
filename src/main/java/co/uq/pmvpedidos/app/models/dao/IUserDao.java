@@ -5,11 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import co.uq.pmvpedidos.app.models.entity.User;
 
-
-
 @Repository("userRepository")
-public interface UserRepository extends JpaRepository<User, Long> {
-	 User findByEmail(String email);
-	 
-	 User findById(int id);
+public interface IUserDao extends JpaRepository<User, Long> {
+	User findByEmail(String email);
 }

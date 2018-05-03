@@ -44,7 +44,7 @@ public class Factura implements Serializable {
 	@JoinColumn(name = "factura_id")
 	private List<ItemFactura> items;
 
-	private User encargado;
+	private int encargado;
 
 	public Factura() {
 		this.items = new ArrayList<ItemFactura>();
@@ -126,11 +126,11 @@ public class Factura implements Serializable {
 		return total;
 	}
 
-	public User getEncargado() {
+	public int getEncargado() {
 		return encargado;
 	}
 
-	public void setEncargado(User encargado) {
+	public void setEncargado(int encargado) {
 		this.encargado = encargado;
 	}
 

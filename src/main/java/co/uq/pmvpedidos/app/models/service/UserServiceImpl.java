@@ -9,16 +9,16 @@ import org.springframework.stereotype.Service;
 
 import co.uq.pmvpedidos.app.models.entity.User;
 import co.uq.pmvpedidos.app.models.entity.Role;
-import co.uq.pmvpedidos.app.models.dao.RoleRepository;
-import co.uq.pmvpedidos.app.models.dao.UserRepository;
+import co.uq.pmvpedidos.app.models.dao.IRoleDao;
+import co.uq.pmvpedidos.app.models.dao.IUserDao;
 
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private UserRepository userRepository;
+	private IUserDao userRepository;
 	@Autowired
-	private RoleRepository roleRepository;
+	private IRoleDao roleRepository;
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 

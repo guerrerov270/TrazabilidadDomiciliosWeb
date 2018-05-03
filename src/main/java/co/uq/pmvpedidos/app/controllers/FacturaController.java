@@ -31,6 +31,7 @@ import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.ItemFactura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
+import co.uq.pmvpedidos.app.models.entity.User;
 import co.uq.pmvpedidos.app.models.service.IClienteService;
 import co.uq.pmvpedidos.app.models.service.IFacturaService;
 import co.uq.pmvpedidos.app.util.paginator.PageRender;
@@ -158,26 +159,18 @@ public class FacturaController {
 		List<Estado> estados = facturaService.findAllStates();
 		model.addAttribute("estados", estados);
 	}
+	
+	@ModelAttribute("users")
+	public void getUsers(Model model) {
+		List<User> users = facturaService.findAllUsers();
+		model.addAttribute("users", users);
+	}
 
 	@ModelAttribute("cliente")
 	public void clienteModel(Model model) {
 		Cliente cliente = new Cliente();
 		model.addAttribute("cliente", cliente);
 	}
-
-	// @RequestMapping(value = "/listarpedidos", method = RequestMethod.POST)
-	// public String guardar(@RequestParam("id") Long id, Map<String, Object> model,
-	// RedirectAttributes flash) {
-	//
-	// Cliente cliente = clienteService.findOne(id);
-	// if (cliente == null) {
-	// flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
-	// return "redirect:/listarpedidos";
-	// }
-	//
-	// model.put("cliente", cliente);
-	// return "ver";
-	// }
 
 	@RequestMapping(value = "/listarpedidos", method = RequestMethod.POST)
 	public String guardar(@RequestParam("id") Long id, Map<String, Object> model, RedirectAttributes flash) {

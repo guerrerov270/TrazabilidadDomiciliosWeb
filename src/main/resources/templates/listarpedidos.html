@@ -17,8 +17,8 @@
 						teléfono para crear un nuevo pedido:</label>
 					<div class="input-group mb-6">
 						<input id="id" type="number" th:field="*{id}" class="form-control"
-							placeholder="Número de teléfono" aria-label="Número de teléfono"
-							aria-describedby="basic-addon2" />
+							placeholder="Número de teléfono"
+							aria-label="Número de teléfono" aria-describedby="basic-addon2" />
 					</div>
 				</form>
 
@@ -37,6 +37,7 @@
 							<th>Entregado</th>
 							<th>Estado</th>
 							<th>Total</th>
+							<th>Responsable</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -56,6 +57,13 @@
 										th:text="${estado.descripcion}"></option>
 							</select></td>
 							<td th:text="${factura.total}"></td>
+							<td><select class="form-control" id="estados" name="estados"
+								onchange="">
+									<option value="">Seleccione uno</option>
+									<option th:each="user : ${users}"
+										th:value="${user.name}"
+										th:text="${user.name}"></option>
+							</select></td>
 						</tr>
 					</tbody>
 				</table>

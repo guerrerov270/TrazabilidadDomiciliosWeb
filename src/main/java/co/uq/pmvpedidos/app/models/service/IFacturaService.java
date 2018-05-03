@@ -8,11 +8,12 @@ import org.springframework.data.domain.Pageable;
 import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
+import co.uq.pmvpedidos.app.models.entity.User;
 
 public interface IFacturaService {
 
 	public List<Factura> findAll();
-	
+
 	public List<Estado> findAllStates();
 
 	public Page<Factura> findAll(Pageable pageable);
@@ -26,5 +27,7 @@ public interface IFacturaService {
 	public List<Producto> findByNombre(String term);
 
 	public Producto findProductoById(Long id);
+
+	public List<User> findAllUsers();
 
 }

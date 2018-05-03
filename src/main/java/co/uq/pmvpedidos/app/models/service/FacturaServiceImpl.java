@@ -11,9 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import co.uq.pmvpedidos.app.models.dao.IEstadoDao;
 import co.uq.pmvpedidos.app.models.dao.IFacturaDao;
 import co.uq.pmvpedidos.app.models.dao.IProductoDao;
+import co.uq.pmvpedidos.app.models.dao.IUserDao;
 import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
+import co.uq.pmvpedidos.app.models.entity.User;
 
 @Service
 public class FacturaServiceImpl implements IFacturaService {
@@ -23,9 +25,12 @@ public class FacturaServiceImpl implements IFacturaService {
 
 	@Autowired
 	private IProductoDao productoDao;
-	
+
 	@Autowired
 	private IEstadoDao estadoDao;
+
+	@Autowired
+	private IUserDao userDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -79,6 +84,12 @@ public class FacturaServiceImpl implements IFacturaService {
 	public List<Estado> findAllStates() {
 		// TODO Auto-generated method stub
 		return (List<Estado>) estadoDao.findAll();
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		// TODO Auto-generated method stub
+		return (List<User>) userDao.findAll();
 	}
 
 }

@@ -4,9 +4,9 @@ INSERT INTO `role` VALUES (1,'ADMIN');
 INSERT INTO `role` VALUES (2,'RECEP');
 INSERT INTO `role` VALUES (3,'DOMI');
 
-INSERT INTO `user` VALUES (1,1,'mi@email.com','Jaimes','Rocío','$2a$10$kBNYnE1Dxq1cKm4KrHFaKO27O3riuvzhXtFRCBuvyuXN6DETaHy9e');
+INSERT INTO `user` VALUES (1,1,'rocio@email.com','Jaimes','Rocío','$2a$10$kBNYnE1Dxq1cKm4KrHFaKO27O3riuvzhXtFRCBuvyuXN6DETaHy9e'),(2,1,'willman@gmail.com','Montoya','Willman','$2a$10$wuRKVAXjMVxR/phGWPZFd.sa7K9V/CU9m66MKthTk2kS7Q7pKvcHe'),(3,1,'diego@gmail.com','Ortiz','Diego','$2a$10$IItX5GR3hoQPcCXAlJRW6uXBWWVUUELCoTjSdoh8br9XSBn9u9BYK');
 
-INSERT INTO `user_role` VALUES (1,1);
+INSERT INTO `user_role` VALUES (1,1),(3,2),(2,3);
 
 INSERT INTO estados (descripcion) VALUES ('Pendiente');
 INSERT INTO estados (descripcion) VALUES ('Producción');
