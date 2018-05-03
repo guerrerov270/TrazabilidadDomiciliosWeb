@@ -154,18 +154,40 @@ public class FacturaController {
 		return "listarpedidos";
 	}
 
+	// Lista de todos los estados disponibles en base de datos a objeto model para
+	// ser accedidios desde la vista
 	@ModelAttribute("estados")
 	public void getEstados(Model model) {
 		List<Estado> estados = facturaService.findAllStates();
 		model.addAttribute("estados", estados);
 	}
-	
+
+	// Lista de todos los usuarios disponibles en base de datos a objeto model para
+	// ser accedidios desde la vista
 	@ModelAttribute("users")
 	public void getUsers(Model model) {
 		List<User> users = facturaService.findAllUsers();
 		model.addAttribute("users", users);
 	}
 
+	// Un estado vacío asignarle el teléfono introducido para crear el pedido,
+	// y poderlo buscar en la base de datos
+	@ModelAttribute("cliente")
+	public void estadoModel(Model model) {
+		Estado estado = new Estado();
+		model.addAttribute("estado", estado);
+	}
+
+	// Un usuario vacío asignarle el teléfono introducido para crear el pedido,
+	// y poderlo buscar en la base de datos
+	@ModelAttribute("cliente")
+	public void userModel(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
+	}
+
+	// Un cliente vacío asignarle el teléfono introducido para crear el pedido,
+	// y poderlo buscar en la base de datos
 	@ModelAttribute("cliente")
 	public void clienteModel(Model model) {
 		Cliente cliente = new Cliente();
