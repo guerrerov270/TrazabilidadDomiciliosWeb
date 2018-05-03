@@ -22,5 +22,34 @@ INSERT INTO productos (nombre, descripcion,  precio, foto) VALUES('Hewlett Packa
 INSERT INTO productos (nombre, descripcion,  precio, foto) VALUES('Bianchi Bicicleta Aro 26','Una descripción detallada del producto', 69990, '');
 INSERT INTO productos (nombre, descripcion,  precio, foto) VALUES('Mica Comoda 5 Cajones', 'Una descripción detallada del producto',299990, '');
 
+INSERT INTO zonas (nombre, precio_envio) VALUES ('NNNN', '0');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z060', '600');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z070', '700');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z080', '800');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z090', '900');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z001', '1000');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z011', '1100');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z012', '1200');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z013', '1300');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z014', '1400');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z015', '1500');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z016', '1600');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z017', '1700');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z018', '1800');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z019', '1900');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z020', '2000');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z021', '2100');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z022', '2200');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z023', '2300');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z024', '2400');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z025', '2500');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z026', '2600');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z027', '2700');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z028', '2800');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z029', '2900');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z030', '3000');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z040', '4000');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z200', '20000');
+INSERT INTO zonas (nombre, precio_envio) VALUES ('Z700', '7000');
 
 
