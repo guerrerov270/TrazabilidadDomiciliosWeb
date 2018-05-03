@@ -38,7 +38,6 @@ public class Cliente implements Serializable {
 
 	private String empresa;
 
-	@NotEmpty
 	private String zona;
 
 	@Column(name = "create_at")

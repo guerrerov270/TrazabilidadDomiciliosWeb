@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -172,7 +173,7 @@ public class FacturaController {
 
 	// Un estado vacío asignarle el teléfono introducido para crear el pedido,
 	// y poderlo buscar en la base de datos
-	@ModelAttribute("cliente")
+	@ModelAttribute("estado")
 	public void estadoModel(Model model) {
 		Estado estado = new Estado();
 		model.addAttribute("estado", estado);
@@ -180,7 +181,7 @@ public class FacturaController {
 
 	// Un usuario vacío asignarle el teléfono introducido para crear el pedido,
 	// y poderlo buscar en la base de datos
-	@ModelAttribute("cliente")
+	@ModelAttribute("user")
 	public void userModel(Model model) {
 		User user = new User();
 		model.addAttribute("user", user);
@@ -205,12 +206,6 @@ public class FacturaController {
 
 		model.put("cliente", cliente);
 		return "ver";
-	}
-
-	@RequestMapping("/cambioestado.do")
-	public @ResponseBody String loginDisponible(@RequestParam("estado") String estado) {
-
-		return "Conectado";
 	}
 
 }
