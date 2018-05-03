@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<title>Spring Security</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+			<a class="navbar-brand" th:href="@{/factura/listarpedidos}"> <img
+				th:src="@{/images/logo.png}" width="30" height="30"
+				class="d-inline-block align-top" alt=""> La Chispa al Carbón
+			</a>
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav mr-auto">
+					<!-- <li class="nav-item"><form th:action="@{/registration}"
+							method="get">
+							<button class="btn btn-md btn-outline-warning btn-block"
+								type="Submit">Registrarse</button>
+						</form></li> -->
+
+
+				</ul>
+			</div>
+		</nav>
+
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}"
+			th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}"
+			th:text="${info}"></div>
+	</header>
+	<!-- <form th:action="@{/registration}" method="get">
+		<button class="btn btn-md btn-warning btn-block" type="Submit">Registrarse</button>
+	</form> -->
+	<div align="left" th:if="${param.error}">
+		<div class="alert alert-danger" th:text="#{login.error}"></div>
+	</div>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="Bienvenido"></div>
+			<div class="card-body" align="center">
+				<img th:src="@{/images/chispa.png}"
+					class="img-responsive center-block" width="300" height="300"
+					alt="Logo" />
+				<form th:action="@{/login}" method="POST" class="form-signin">
+
+					<div class="col-md-6 col-md-offset-3">
+						<input type="text" id="email" name="email" th:placeholder="Email"
+							class="form-control" />
+					</div>
+
+					<div class="col-md-6 col-md-offset-3">
+						<input type="password" th:placeholder="Contraseña" id="password"
+							name="password" class="form-control" />
+					</div>
+
+					<div class="col-md-6 col-md-offset-3">
+						<button class="btn btn-lg btn-primary btn-block" name="Submit"
+							value="Login" type="Submit" th:text="Ingresar"></button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- <p class="admin-message-text text-center" th:utext="${adminMessage}"></p>
+	<form th:action="@{/registration}" method="get">
+		<button class="btn btn-md btn-outline-warning btn-block" type="Submit">Registrar
+			usuario</button> </form>-->
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

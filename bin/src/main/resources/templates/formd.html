@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#zonas > option[value="*{zonaID}"]').attr('selected', 'selected');
+	});
+</script>
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-dark text-white">
+			<div class="card-header" th:text="${titulo_d}"></div>
+			<div class="card-body">
+
+				<div th:object="${direccion}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+						role="alert">
+						<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+					</ul>
+				</div>
+
+				<form th:action="@{/formd}" th:object="${direccion}" method="post"
+					enctype="multipart/form-data">
+					<div class="form-group row">
+						<label for="tipoDireccion" class="col-sm-2 col-form-label">Tipo
+							dirección</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{tipoDireccion}"
+								class="form-control" th:errorclass="'form-control alert-danger'" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('tipoDireccion')}"
+								th:errors="*{tipoDireccion}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="numero1" class="col-sm-2 col-form-label">Número
+							1</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{numero1}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('numero1')}" th:errors="*{numero1}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="numero2" class="col-sm-2 col-form-label">Número
+							2</label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{numero2}" class="form-control"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('numero2')}" th:errors="*{numero2}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="numero3" class="col-sm-2 col-form-label">Número
+							3</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" th:field="*{numero3}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('numero3')}" th:errors="*{numero3}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="tipoResidencia" class="col-sm-2 col-form-label">Tipo
+							vivienda</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control"
+								th:field="*{tipoResidencia}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('tipoResidencia')}"
+								th:errors="*{tipoResidencia}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="barrio" class="col-sm-2 col-form-label">Barrio</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" th:field="*{barrio}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('barrio')}" th:errors="*{barrio}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="zonaID" class="col-sm-2 col-form-label">Zonas
+							disponibles</label>
+						<div class="col-sm-6">
+							<select class="form-control" id="zonas" name="zonas" onchange="">
+								<option value="">Seleccione una</option>
+								<option th:each="zona : ${zonas}" th:value="${zona.nombre}"
+									selected="selected" th:text="${zona.nombre}"></option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group row">
+						<label for="zonaID2" class="col-sm-2 col-form-label">Zona
+							seleccionada</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" th:field="*{zonaID}"
+								th:errorclass="'form-control alert-danger'" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('zonaID')}" th:errors="*{zonaID}"></small>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" th:value="${titulo_d}"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
