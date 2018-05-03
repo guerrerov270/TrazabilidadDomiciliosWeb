@@ -29,12 +29,12 @@ public class Factura implements Serializable {
 
 	private String observacion;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIME)
 	private Date creado;
 
 	private String estado;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIME)
 	private Date entregado;
 
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -43,6 +43,8 @@ public class Factura implements Serializable {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "factura_id")
 	private List<ItemFactura> items;
+
+	private User encargado;
 
 	public Factura() {
 		this.items = new ArrayList<ItemFactura>();
@@ -122,6 +124,14 @@ public class Factura implements Serializable {
 			total += items.get(i).calcularImporte();
 		}
 		return total;
+	}
+
+	public User getEncargado() {
+		return encargado;
+	}
+
+	public void setEncargado(User encargado) {
+		this.encargado = encargado;
 	}
 
 	private static final long serialVersionUID = 1L;

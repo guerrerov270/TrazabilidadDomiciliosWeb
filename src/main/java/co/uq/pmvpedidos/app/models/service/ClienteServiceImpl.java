@@ -9,11 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.uq.pmvpedidos.app.models.dao.IClienteDao;
+import co.uq.pmvpedidos.app.models.dao.IEstadoDao;
 import co.uq.pmvpedidos.app.models.dao.IFacturaDao;
 import co.uq.pmvpedidos.app.models.dao.IProductoDao;
+import co.uq.pmvpedidos.app.models.dao.IZonaDao;
 import co.uq.pmvpedidos.app.models.entity.Cliente;
+import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
+import co.uq.pmvpedidos.app.models.entity.Zona;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
@@ -26,6 +30,9 @@ public class ClienteServiceImpl implements IClienteService {
 
 	@Autowired
 	private IFacturaDao facturaDao;
+
+	@Autowired
+	private IZonaDao zonaDao;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -95,6 +102,12 @@ public class ClienteServiceImpl implements IClienteService {
 	public boolean exists(Long id) {
 		// TODO Auto-generated method stub
 		return clienteDao.exists(id);
+	}
+
+	@Override
+	public List<Zona> findAllZonas() {
+		// TODO Auto-generated method stub
+		return (List<Zona>) zonaDao.findAll();
 	}
 
 }

@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -25,10 +26,9 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private Long id;
-
 	// @NotEmpty
-	// private String telefono;
+	// @Size(min=7,max=10)
+	private Long id;
 
 	@NotEmpty
 	private String nombre;
@@ -38,6 +38,7 @@ public class Cliente implements Serializable {
 
 	private String empresa;
 
+	@NotEmpty
 	private String zona;
 
 	@Column(name = "create_at")

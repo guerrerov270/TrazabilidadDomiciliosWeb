@@ -1,5 +1,6 @@
 package co.uq.pmvpedidos.app.controllers;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +23,8 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
+import co.uq.pmvpedidos.app.models.entity.Estado;
+import co.uq.pmvpedidos.app.models.entity.Zona;
 import co.uq.pmvpedidos.app.models.service.IClienteService;
 import co.uq.pmvpedidos.app.util.paginator.PageRender;
 
@@ -122,17 +126,11 @@ public class ClienteController {
 		}
 		return "redirect:/listar";
 	}
-
-	// @ModelAttribute("direcciones")
-	// public void getDirecciones(Model model) {
-	// List<Direccion> direcciones = direccionService.findAll();
-	// model.addAttribute("direcciones", direcciones);
-	// }
-
-	// @ModelAttribute("direccion")
-	// public void getDireccion(Model model) {
-	// Direccion direccion = new Direccion();
-	// model.addAttribute("direccion", direccion);
-	// }
+	
+	@ModelAttribute("zonas")
+	public void getZonas(Model model) {
+		List<Zona> zonas = clienteService.findAllZonas();
+		model.addAttribute("zonas", zonas);
+	}
 
 }
