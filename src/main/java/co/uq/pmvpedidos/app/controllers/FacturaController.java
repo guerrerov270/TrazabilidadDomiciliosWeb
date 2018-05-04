@@ -23,9 +23,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
 import co.uq.pmvpedidos.app.models.entity.Estado;
@@ -207,5 +210,7 @@ public class FacturaController {
 		model.put("cliente", cliente);
 		return "ver";
 	}
+
+	
 
 }
