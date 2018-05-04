@@ -23,7 +23,7 @@
 						th:text="'Datos del cliente'"></li>
 					<li class="list-group-item" th:text="${factura.cliente}"></li>
 					<li class="list-group-item" th:text="${factura.cliente.direccion}"></li>
-					<li class="list-group-item" th:text="${factura.cliente.zona}"></li>
+					<li class="list-group-item" th:text="${factura.cliente.empresa}"></li>
 				</ul>
 
 				<ul class="list-group my-2">
@@ -31,10 +31,7 @@
 						th:text="'Datos de la factura'"></li>
 
 					<li class="list-group-item" th:text="'ID: ' + ${factura.id}"></li>
-					<li class="list-group-item"
-						th:text="'Estado: ' + ${factura.estado}"></li>
-					<li class="list-group-item"
-						th:text="'Observación: ' + ${factura.observacion}"></li>
+					<li class="list-group-item" th:text="'Estado: ' + ${factura.state}"></li>
 					<li class="list-group-item"
 						th:text="'Registrado: ' + ${factura.creado}"></li>
 					<li class="list-group-item"

@@ -56,14 +56,16 @@
 								onchange="cambioEstado()">
 									<option value="">Seleccione uno</option>
 									<option th:each="state : ${estados}" th:value="${state.id}"
-										th:text="${state.descripcion}" th:selected="${factura.state}"></option>
+										th:text="${state.descripcion}"
+										th:selected="(${state.id} == *{factura.state})"></option>
 							</select></td>
 							<td th:text="${factura.total}"></td>
 							<td><select class="form-control" id="users" name="users"
 								onchange="cambioUser()">
 									<option value="">Seleccione uno</option>
 									<option th:each="user : ${users}" th:value="${user.id}"
-										th:text="${user.name}" th:selected="${factura.encargado}"></option>
+										th:text="${user.name}"
+										th:selected="(${user.id} == *{factura.encargado})"></option>
 							</select></td>
 						</tr>
 					</tbody>

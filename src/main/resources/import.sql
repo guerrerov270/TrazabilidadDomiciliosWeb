@@ -30,25 +30,25 @@ INSERT INTO zonas(nombre, precio_envio) VALUES ('Z70',7000);
 
 INSERT INTO clientes (id, direccion,empresa, nombre) VALUES(3103567898,'Dirección','Empresa','Un usuario');
 
-INSERT INTO facturas (creado,encargado,state,clientef_id) VALUES(NOW(), 3, 1,3103567898);
+INSERT INTO facturas (creado,encargado,state,clientef_id, observacion) VALUES(NOW(), 3, 1,3103567898, '');
 INSERT INTO facturas_items (cantidad, producto_id,factura_id) VALUES(1,1,1);
 
-INSERT INTO facturas (creado,encargado,state,clientef_id) VALUES(NOW(), 2, 2,3103567898);
+INSERT INTO facturas (creado,encargado,state,clientef_id, observacion) VALUES(NOW(), 2, 2,3103567898, '');
 INSERT INTO facturas_items (cantidad, producto_id,factura_id) VALUES(1,1,2);
 
-INSERT INTO facturas (creado,encargado,state,clientef_id) VALUES(NOW(), 2, 3,3103567898);
+INSERT INTO facturas (creado,encargado,state,clientef_id, observacion) VALUES(NOW(), 2, 3,3103567898, '');
 INSERT INTO facturas_items (cantidad, producto_id,factura_id) VALUES(1,1,3);
 
-INSERT INTO facturas (creado,encargado,state,clientef_id) VALUES(NOW(), 3, 4,3103567898);
+INSERT INTO facturas (creado,encargado,state,clientef_id, observacion) VALUES(NOW(), 3, 4,3103567898, '');
 INSERT INTO facturas_items (cantidad, producto_id,factura_id) VALUES(1,1,4);
 
-INSERT INTO facturas (creado,encargado,state,clientef_id) VALUES(NOW(), 2, 5,3103567898);
+INSERT INTO facturas (creado,encargado,state,clientef_id, observacion) VALUES(NOW(), 2, 5,3103567898, '');
 INSERT INTO facturas_items (cantidad, producto_id,factura_id) VALUES(1,1,5);
 
-INSERT INTO facturas (creado,encargado,state,clientef_id) VALUES(NOW(), 1, 6,3103567898);
+INSERT INTO facturas (creado,encargado,state,clientef_id, observacion) VALUES(NOW(), 1, 6,3103567898, '');
 INSERT INTO facturas_items (cantidad, producto_id,factura_id) VALUES(1,1,6);
 
-INSERT INTO facturas (creado,encargado,state,clientef_id) VALUES(NOW(), 3, 7,3103567898);
+INSERT INTO facturas (creado,encargado,state,clientef_id, observacion) VALUES(NOW(), 3, 7,3103567898, '');
 INSERT INTO facturas_items (cantidad, producto_id,factura_id) VALUES(1,1,7);
 
 
