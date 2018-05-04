@@ -25,14 +25,15 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active"><a class="nav-link"
 						th:href="@{/admin/home}">Administración</a></li>
-					<li class="nav-item"><a class="nav-link"
+					<li class="nav-item active"><a class="nav-link"
 						th:href="@{/factura/listarpedidos}">Pedidos</a></li>
-					<li class="nav-item"><a class="nav-link"
+					<li class="nav-item active"><a class="nav-link"
 						th:href="@{/listarProductos}">Productos</a></li>
-					<li class="nav-item"><a class="nav-link" href="#about"
+					<li class="nav-item active"><a class="nav-link" href="#about"
 						th:href="@{/listar}">Clientes</a></li>
-					<li class="nav-item"><form th:action="@{/logout}" method="get">
-							<button class="btn  btn-outline-danger btn-block"
+					<li class="nav-item active"><form th:action="@{/logout}"
+							method="get">
+							<button class="btn  btn-outline-danger btn-block align-right"
 								name="registration" type="Submit">Salir</button>
 						</form></li>
 
@@ -56,11 +57,14 @@
 
 	<footer th:fragment="footer" class="container">
 		<hr />
-		<img th:src="@{/images/spring.png}" alt="Spring logo" />
-		<p>
-			Powered by <a href="https://projects.spring.io/spring-boot/">Spring
-				Boot</a> y <a href="http://www.thymeleaf.org">Thymeleaf</a>.
-		</p>
+
+		<div class="footer-copyright py-3 text-center">
+			<img class="img-responsive " width="30" height="30"
+				th:src="@{/images/logo.png}" alt="Chispa logo" />© 2018 Todos los
+			derechos reservados
+		</div>
+
+
 
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Bootstrap JS -->

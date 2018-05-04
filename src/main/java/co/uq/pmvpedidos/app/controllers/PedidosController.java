@@ -27,11 +27,4 @@ public class PedidosController {
 	public List<Factura> getAllPedidos() {
 		return pedidoRepository.findAll();
 	}
-	
-	// Capturando el estado seleccionado y el id del pedido
-		@RequestMapping(method = RequestMethod.GET)
-		@ResponseBody
-		public String getEstado(@RequestBody String estado) {
-			return estado;
-		}
 }
