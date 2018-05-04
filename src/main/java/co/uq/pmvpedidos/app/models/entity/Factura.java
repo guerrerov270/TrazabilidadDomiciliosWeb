@@ -40,7 +40,7 @@ public class Factura implements Serializable {
 	@Temporal(TemporalType.TIME)
 	private Date creado;
 
-	private String estado;
+	private int state;
 
 	@Temporal(TemporalType.TIME)
 	private Date entregado;
@@ -92,12 +92,12 @@ public class Factura implements Serializable {
 		return items;
 	}
 
-	public String getEstado() {
-		return estado;
+	public int getState() {
+		return state;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setState(int state) {
+		this.state = state;
 	}
 
 	public void setItems(List<ItemFactura> items) {

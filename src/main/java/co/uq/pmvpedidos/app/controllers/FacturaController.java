@@ -174,16 +174,14 @@ public class FacturaController {
 		model.addAttribute("users", users);
 	}
 
-	// Un estado vacío asignarle el teléfono introducido para crear el pedido,
-	// y poderlo buscar en la base de datos
+	// Un estado vacío
 	@ModelAttribute("estado")
 	public void estadoModel(Model model) {
 		Estado estado = new Estado();
 		model.addAttribute("estado", estado);
 	}
 
-	// Un usuario vacío asignarle el teléfono introducido para crear el pedido,
-	// y poderlo buscar en la base de datos
+	// Un usuario vacío
 	@ModelAttribute("user")
 	public void userModel(Model model) {
 		User user = new User();
@@ -210,7 +208,5 @@ public class FacturaController {
 		model.put("cliente", cliente);
 		return "ver";
 	}
-
-	
 
 }
