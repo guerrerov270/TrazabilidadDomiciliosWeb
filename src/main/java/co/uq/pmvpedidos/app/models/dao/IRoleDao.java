@@ -5,10 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import co.uq.pmvpedidos.app.models.entity.Role;
 
-
-
 @Repository("roleRepository")
-public interface IRoleDao extends JpaRepository<Role, Integer>{
+public interface IRoleDao extends JpaRepository<Role, Integer> {
 	Role findByRole(String role);
 
 }

@@ -42,8 +42,6 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
-			// bindingResult.rejectValue("email", "error.user", "Ya existe un usuario
-			// registrado con este Email");
 			flash.addFlashAttribute("error", "Ya existe un usuario registrado con este Email");
 			return "redirect:/registration";
 		}

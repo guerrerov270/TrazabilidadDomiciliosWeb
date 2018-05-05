@@ -27,9 +27,9 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	public Resource load(String filename) throws MalformedURLException {
 		Path pathFoto = getPath(filename);
 		log.info("pathFoto: " + pathFoto);
-		
+
 		Resource recurso = new UrlResource(pathFoto.toUri());
-		
+
 		if (!recurso.exists() || !recurso.isReadable()) {
 			throw new RuntimeException("Error: no se puede cargar la imagen: " + pathFoto.toString());
 		}
@@ -52,9 +52,9 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	public boolean delete(String filename) {
 		Path rootPath = getPath(filename);
 		File archivo = rootPath.toFile();
-		
-		if(archivo.exists() && archivo.canRead()) {
-			if(archivo.delete()) {
+
+		if (archivo.exists() && archivo.canRead()) {
+			if (archivo.delete()) {
 				return true;
 			}
 		}
@@ -68,12 +68,11 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	@Override
 	public void deleteAll() {
 		FileSystemUtils.deleteRecursively(Paths.get(UPLOADS_FOLDER).toFile());
-		
+
 	}
 
 	@Override
 	public void init() throws IOException {
-		// TODO Auto-generated method stub
 		Files.createDirectory(Paths.get(UPLOADS_FOLDER));
 	}
 }

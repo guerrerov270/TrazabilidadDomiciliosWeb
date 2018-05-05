@@ -22,6 +22,7 @@ import org.springframework.data.annotation.Transient;
 @Table(name = "user")
 public class User {
 
+	// TODO: Textos feedback en archivo aparte
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")

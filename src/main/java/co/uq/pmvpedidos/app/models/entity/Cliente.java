@@ -15,13 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Size;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "clientes")
@@ -30,8 +26,6 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	// @NotEmpty
-	// @Size(min=7,max=10)
 	private Long id;
 
 	@NotEmpty
@@ -46,7 +40,6 @@ public class Cliente implements Serializable {
 
 	@Column(name = "create_at")
 	@Temporal(TemporalType.TIMESTAMP)
-	// @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 
 	private String resenia;
@@ -55,18 +48,8 @@ public class Cliente implements Serializable {
 	@JsonIgnore
 	private List<Factura> facturas;
 
-	// @OneToMany(mappedBy = "clienteD", fetch = FetchType.LAZY, cascade =
-	// CascadeType.ALL, orphanRemoval = true)
-	// private List<Direccion> direcciones;
-	//
-	// @OneToMany(mappedBy = "clienteT", fetch = FetchType.LAZY, cascade =
-	// CascadeType.ALL, orphanRemoval = true)
-	// private List<Telefono> telefonos;
-
 	public Cliente() {
 		facturas = new ArrayList<Factura>();
-		// direcciones = new ArrayList<Direccion>();
-		// telefonos = new ArrayList<Telefono>();
 	}
 
 	public Long getId() {
@@ -88,38 +71,6 @@ public class Cliente implements Serializable {
 	public void addFactura(Factura factura) {
 		facturas.add(factura);
 	}
-
-	// public List<Direccion> getDirecciones() {
-	// return direcciones;
-	// }
-	//
-	// public void setDirecciones(List<Direccion> direcciones) {
-	// this.direcciones = direcciones;
-	// }
-	//
-	// public void addDireccion(Direccion direccion) {
-	// direcciones.add(direccion);
-	// }
-	//
-	// public List<Telefono> getTelefonos() {
-	// return telefonos;
-	// }
-	//
-	// public void setTelefonos(List<Telefono> telefonos) {
-	// this.telefonos = telefonos;
-	// }
-	//
-	// public void addTelefono(Telefono telefono) {
-	// telefonos.add(telefono);
-	// }
-
-	// public String getTelefono() {
-	// return telefono;
-	// }
-	//
-	// public void setTelefono(String telefono) {
-	// this.telefono = telefono;
-	// }
 
 	public Date getCreateAt() {
 		return createAt;

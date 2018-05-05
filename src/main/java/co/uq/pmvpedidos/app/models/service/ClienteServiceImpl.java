@@ -9,12 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.uq.pmvpedidos.app.models.dao.IClienteDao;
-import co.uq.pmvpedidos.app.models.dao.IEstadoDao;
 import co.uq.pmvpedidos.app.models.dao.IFacturaDao;
 import co.uq.pmvpedidos.app.models.dao.IProductoDao;
 import co.uq.pmvpedidos.app.models.dao.IZonaDao;
 import co.uq.pmvpedidos.app.models.entity.Cliente;
-import co.uq.pmvpedidos.app.models.entity.Estado;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
 import co.uq.pmvpedidos.app.models.entity.Zona;
@@ -37,7 +35,6 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Cliente> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Cliente>) clienteDao.findAll();
 	}
 
@@ -82,7 +79,7 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	@Transactional
 	public void deleteFactura(Long id) {
-		facturaDao.delete(id); // facturaDao.deleteById(id);
+		facturaDao.delete(id);
 	}
 
 	@Override
@@ -94,19 +91,16 @@ public class ClienteServiceImpl implements IClienteService {
 	@Override
 	@Transactional(readOnly = true)
 	public Producto findProductoById(Long id) {
-		// TODO Auto-generated method stub
 		return productoDao.findOne(id);
 	}
 
 	@Override
 	public boolean exists(Long id) {
-		// TODO Auto-generated method stub
 		return clienteDao.exists(id);
 	}
 
 	@Override
 	public List<Zona> findAllZonas() {
-		// TODO Auto-generated method stub
 		return (List<Zona>) zonaDao.findAll();
 	}
 

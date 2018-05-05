@@ -35,21 +35,18 @@ public class FacturaServiceImpl implements IFacturaService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Factura> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Factura>) facturaDao.findAll();
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Page<Factura> findAll(Pageable pageable) {
-		// TODO Auto-generated method stub
 		return facturaDao.findAll(pageable);
 	}
 
 	@Override
 	@Transactional
 	public void save(Factura factura) {
-		// TODO Auto-generated method stub
 		facturaDao.save(factura);
 
 	}
@@ -57,13 +54,11 @@ public class FacturaServiceImpl implements IFacturaService {
 	@Override
 	@Transactional(readOnly = true)
 	public Factura findOne(Long id) {
-		// TODO Auto-generated method stub
 		return facturaDao.findOne(id);
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
 		facturaDao.delete(id);
 	}
 
@@ -76,19 +71,16 @@ public class FacturaServiceImpl implements IFacturaService {
 	@Override
 	@Transactional(readOnly = true)
 	public Producto findProductoById(Long id) {
-		// TODO Auto-generated method stub
 		return productoDao.findOne(id);
 	}
 
 	@Override
 	public List<Estado> findAllStates() {
-		// TODO Auto-generated method stub
 		return (List<Estado>) estadoDao.findAll();
 	}
 
 	@Override
 	public List<User> findAllUsers() {
-		// TODO Auto-generated method stub
 		return (List<User>) userDao.findAll();
 	}
 
