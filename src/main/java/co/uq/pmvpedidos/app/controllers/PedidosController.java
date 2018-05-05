@@ -24,4 +24,6 @@ public class PedidosController {
 	public List<Factura> getAllPedidos() {
 		return pedidoRepository.findAll();
 	}
+	
+	//TODO: Query para filtrar por empleado y estados
 }
