@@ -73,11 +73,6 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.jacoco</groupId>
-			<artifactId>jacoco-maven-plugin</artifactId>
-			<version>0.8.0</version>
-		</dependency>
 
 		<!-- Agregadas manualmente -->
 		<!-- https://mvnrepository.com/artifact/net.sourceforge.nekohtml/nekohtml -->
