@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import co.uq.pmvpedidos.app.models.entity.Cliente;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 import co.uq.pmvpedidos.app.models.entity.Producto;
-import co.uq.pmvpedidos.app.models.entity.Zona;
 
 public interface IClienteService {
 
@@ -33,7 +32,5 @@ public interface IClienteService {
 	public Factura findFacturaById(Long id);
 
 	public void deleteFactura(Long id);
-
-	public List<Zona> findAllZonas();
 
 }

@@ -1,6 +1,5 @@
 package co.uq.pmvpedidos.app.controllers;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,13 +21,17 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import co.uq.pmvpedidos.app.models.entity.Cliente;
-import co.uq.pmvpedidos.app.models.entity.Zona;
 import co.uq.pmvpedidos.app.models.service.IClienteService;
 import co.uq.pmvpedidos.app.util.paginator.PageRender;
 
 @Controller
 @SessionAttributes("cliente")
 public class ClienteController {
+
+	private static final String TITULO = "titulo";
+	private static final String CLIENTE = "cliente";
+	private static final String REDIRECT_LISTAR = "redirect:/listar";
+	private static final String ERROR = "error";
 
 	@Autowired
 	private IClienteService clienteService;
@@ -39,12 +41,12 @@ public class ClienteController {
 
 		Cliente cliente = clienteService.findOne(id);
 		if (cliente == null) {
-			flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
-			return "redirect:/listar";
+			flash.addFlashAttribute(ERROR, "El cliente no existe en la base de datos");
+			return REDIRECT_LISTAR;
 		}
 
-		model.put("cliente", cliente);
-		model.put("titulo", "Detalle cliente: " + cliente.getNombre());
+		model.put(CLIENTE, cliente);
+		model.put(TITULO, "Detalle cliente: " + cliente.getNombre());
 		return "ver";
 	}
 
@@ -55,8 +57,8 @@ public class ClienteController {
 
 		Page<Cliente> clientes = clienteService.findAll(pageRequest);
 
-		PageRender<Cliente> pageRender = new PageRender<Cliente>("/listar", clientes);
-		model.addAttribute("titulo", "Listado de clientes");
+		PageRender<Cliente> pageRender = new PageRender<>("/listar", clientes);
+		model.addAttribute(TITULO, "Listado de clientes");
 		model.addAttribute("clientes", clientes);
 		model.addAttribute("page", pageRender);
 		return "listar";
@@ -66,8 +68,8 @@ public class ClienteController {
 	public String crear(Map<String, Object> model) {
 
 		Cliente cliente = new Cliente();
-		model.put("cliente", cliente);
-		model.put("titulo", "Crear Cliente");
+		model.put(CLIENTE, cliente);
+		model.put(TITULO, "Crear Cliente");
 		return "form";
 	}
 
@@ -80,15 +82,15 @@ public class ClienteController {
 			cliente = clienteService.findOne(id);
 
 			if (cliente == null) {
-				flash.addFlashAttribute("error", "El ID del cliente no existe en la BBDD!");
+				flash.addFlashAttribute(ERROR, "El ID del cliente no existe en la BBDD!");
 				return "redirect:/listar";
 			}
 		} else {
-			flash.addFlashAttribute("error", "El ID del cliente no puede ser cero!");
+			flash.addFlashAttribute(ERROR, "El ID del cliente no puede ser cero!");
 			return "redirect:/listar";
 		}
-		model.put("cliente", cliente);
-		model.put("titulo", "Editar Cliente");
+		model.put(CLIENTE, cliente);
+		model.put(TITULO, "Editar Cliente");
 		model.put("titulo_d", "Editar Dirección");
 		return "form";
 	}
@@ -98,7 +100,7 @@ public class ClienteController {
 			SessionStatus status) {
 
 		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Formulario de Cliente");
+			model.addAttribute(TITULO, "Formulario de Cliente");
 			return "form";
 		}
 
@@ -107,7 +109,7 @@ public class ClienteController {
 		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
-		return "redirect:listar";
+		return REDIRECT_LISTAR;
 	}
 
 	@RequestMapping(value = "/eliminar/{id}")
@@ -119,13 +121,7 @@ public class ClienteController {
 			flash.addFlashAttribute("success", "Cliente eliminado con éxito!");
 
 		}
-		return "redirect:/listar";
-	}
-
-	@ModelAttribute("zonas")
-	public void getZonas(Model model) {
-		List<Zona> zonas = clienteService.findAllZonas();
-		model.addAttribute("zonas", zonas);
+		return REDIRECT_LISTAR;
 	}
 
 }

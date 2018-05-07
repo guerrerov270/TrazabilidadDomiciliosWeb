@@ -21,13 +21,14 @@ public class PageRender<T> {
 	public PageRender(String url, Page<T> page) {
 		this.url = url;
 		this.page = page;
-		this.paginas = new ArrayList<PageItem>();
+		this.paginas = new ArrayList<>();
 
 		numElementosPorPagina = page.getSize();
 		totalPaginas = page.getTotalPages();
 		paginaActual = page.getNumber() + 1;
 
-		int desde, hasta;
+		int desde;
+		int hasta;
 		if (totalPaginas <= numElementosPorPagina) {
 			desde = 1;
 			hasta = totalPaginas;

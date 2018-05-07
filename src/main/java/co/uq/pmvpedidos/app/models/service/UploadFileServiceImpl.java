@@ -19,19 +19,21 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
-
 	private final static String UPLOADS_FOLDER = "uploads";
+	private final static String PATH_FOTO = "pathFoto: ";
+	private final static String ROOT_PATH = "rootPath: ";
+	private final static String ERROR = "Error: no se puede cargar la imagen: ";
+	private final Logger log = LoggerFactory.getLogger(getClass());
 
 	@Override
 	public Resource load(String filename) throws MalformedURLException {
 		Path pathFoto = getPath(filename);
-		log.info("pathFoto: " + pathFoto);
+		log.info(PATH_FOTO + pathFoto);
 
 		Resource recurso = new UrlResource(pathFoto.toUri());
 
 		if (!recurso.exists() || !recurso.isReadable()) {
-			throw new RuntimeException("Error: no se puede cargar la imagen: " + pathFoto.toString());
+			throw new RuntimeException(ERROR + pathFoto.toString());
 		}
 		return recurso;
 	}
@@ -41,7 +43,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		String uniqueFilename = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
 		Path rootPath = getPath(uniqueFilename);
 
-		log.info("rootPath: " + rootPath);
+		log.info(ROOT_PATH + rootPath);
 
 		Files.copy(file.getInputStream(), rootPath);
 

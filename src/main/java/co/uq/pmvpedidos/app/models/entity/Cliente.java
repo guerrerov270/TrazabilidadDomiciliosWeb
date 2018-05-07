@@ -49,7 +49,7 @@ public class Cliente implements Serializable {
 	private List<Factura> facturas;
 
 	public Cliente() {
-		facturas = new ArrayList<Factura>();
+		facturas = new ArrayList<>();
 	}
 
 	public Long getId() {

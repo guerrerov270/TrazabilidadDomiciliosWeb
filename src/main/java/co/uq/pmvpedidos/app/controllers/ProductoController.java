@@ -35,6 +35,12 @@ import co.uq.pmvpedidos.app.util.paginator.PageRender;
 @SessionAttributes("producto")
 public class ProductoController {
 
+	private static final String FORM_PRODUCTO = "formproducto";
+	private static final String TITULO = "titulo";
+	private static final String PRODUCTO = "producto";
+	private static final String REDIRECT_LISTAR_PRODUCTOS = "redirect:/listarProductos";
+	private static final String ERROR = "error";
+
 	@Autowired
 	private IProductoService productoService;
 
@@ -49,7 +55,7 @@ public class ProductoController {
 		try {
 			recurso = uploadFileService.load(filename);
 		} catch (MalformedURLException e) {
-			
+
 			e.printStackTrace();
 		}
 
@@ -63,12 +69,12 @@ public class ProductoController {
 
 		Producto producto = productoService.findOne(id);
 		if (producto == null) {
-			flash.addFlashAttribute("error", "El producto no existe en la base de datos");
-			return "redirect:/listarProductos";
+			flash.addFlashAttribute(ERROR, "El producto no existe en la base de datos");
+			return REDIRECT_LISTAR_PRODUCTOS;
 		}
 
-		model.put("producto", producto);
-		model.put("titulo", "Detalle producto: " + producto.getNombre());
+		model.put(PRODUCTO, producto);
+		model.put(TITULO, "Detalle producto: " + producto.getNombre());
 		return "verproducto";
 	}
 
@@ -79,8 +85,8 @@ public class ProductoController {
 
 		Page<Producto> productos = productoService.findAll(pageRequest);
 
-		PageRender<Producto> pageRender = new PageRender<Producto>("/listarProductos", productos);
-		model.addAttribute("titulo", "Listado de productos");
+		PageRender<Producto> pageRender = new PageRender<>("/listarProductos", productos);
+		model.addAttribute(TITULO, "Listado de productos");
 		model.addAttribute("productos", productos);
 		model.addAttribute("page", pageRender);
 		return "listarProductos";
@@ -90,9 +96,9 @@ public class ProductoController {
 	public String crear(Map<String, Object> model) {
 
 		Producto producto = new Producto();
-		model.put("producto", producto);
-		model.put("titulo", "Crear producto");
-		return "formproducto";
+		model.put(PRODUCTO, producto);
+		model.put(TITULO, "Crear producto");
+		return FORM_PRODUCTO;
 	}
 
 	@RequestMapping(value = "/formproducto/{id}")
@@ -103,16 +109,16 @@ public class ProductoController {
 		if (id > 0) {
 			producto = productoService.findOne(id);
 			if (producto == null) {
-				flash.addFlashAttribute("error", "El ID del producto no existe en la BBDD!");
-				return "redirect:/listarProductos";
+				flash.addFlashAttribute(ERROR, "El ID del producto no existe en la BBDD!");
+				return REDIRECT_LISTAR_PRODUCTOS;
 			}
 		} else {
-			flash.addFlashAttribute("error", "El ID del producto no puede ser cero!");
-			return "redirect:/listarProductos";
+			flash.addFlashAttribute(ERROR, "El ID del producto no puede ser cero!");
+			return REDIRECT_LISTAR_PRODUCTOS;
 		}
-		model.put("producto", producto);
-		model.put("titulo", "Editar producto");
-		return "formproducto";
+		model.put(PRODUCTO, producto);
+		model.put(TITULO, "Editar producto");
+		return FORM_PRODUCTO;
 	}
 
 	@RequestMapping(value = "/formproducto", method = RequestMethod.POST)
@@ -120,8 +126,8 @@ public class ProductoController {
 			@RequestParam("file") MultipartFile foto, RedirectAttributes flash, SessionStatus status) {
 
 		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Formulario de Producto");
-			return "formproducto";
+			model.addAttribute(TITULO, "Formulario de Producto");
+			return FORM_PRODUCTO;
 		}
 
 		if (!foto.isEmpty()) {
@@ -136,7 +142,7 @@ public class ProductoController {
 			try {
 				uniqueFilename = uploadFileService.copy(foto);
 			} catch (IOException e) {
-				
+
 				e.printStackTrace();
 			}
 
@@ -168,7 +174,7 @@ public class ProductoController {
 			}
 
 		}
-		return "redirect:/listarProductos";
+		return REDIRECT_LISTAR_PRODUCTOS;
 	}
 
 }

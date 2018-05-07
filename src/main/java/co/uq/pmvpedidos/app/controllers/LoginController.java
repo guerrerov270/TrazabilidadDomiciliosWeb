@@ -18,6 +18,8 @@ import co.uq.pmvpedidos.app.models.service.UserService;
 @Controller
 public class LoginController {
 
+	private final static String REGISTRATION = "registration";
+
 	@Autowired
 	private UserService userService;
 
@@ -33,7 +35,7 @@ public class LoginController {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
 		modelAndView.addObject("user", user);
-		modelAndView.setViewName("registration");
+		modelAndView.setViewName(REGISTRATION);
 		return modelAndView;
 	}
 
@@ -46,18 +48,18 @@ public class LoginController {
 			return "redirect:/registration";
 		}
 		if (bindingResult.hasErrors()) {
-			modelAndView.setViewName("registration");
+			modelAndView.setViewName(REGISTRATION);
 		} else {
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "Usuario registrado con éxito");
 			flash.addFlashAttribute("success", "Usuario registrado con éxito");
 
 			modelAndView.addObject("user", new User());
-			modelAndView.setViewName("registration");
+			modelAndView.setViewName(REGISTRATION);
 			return "redirect:/homeadmin";
 
 		}
-		return "registration";
+		return REGISTRATION;
 	}
 
 	@RequestMapping(value = "/homeadmin", method = RequestMethod.GET)

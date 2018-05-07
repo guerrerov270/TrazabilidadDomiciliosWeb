@@ -10,8 +10,8 @@ public class RecursoNoEncontradoException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	private Long recursoId;
-	private Date fecha;
+	private final Long recursoId;
+	private final Date fecha;
 
 	public RecursoNoEncontradoException(Long recursoId) {
 		this.recursoId = recursoId;
@@ -20,10 +20,6 @@ public class RecursoNoEncontradoException extends RuntimeException {
 
 	public Date getFecha() {
 		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
 	}
 
 	public Long getRecursoId() {

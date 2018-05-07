@@ -41,6 +41,12 @@ import co.uq.pmvpedidos.app.util.paginator.PageRender;
 @SessionAttributes("factura")
 public class FacturaController {
 
+	private static final String FACTURA_FORM = "factura/form";
+	private static final String CREAR_FACTURA = "Crear Factura";
+	private static final String TITULO = "titulo";
+	private static final String REDIRECT_LISTAR = "redirect:/listar";
+	private static final String ERROR = "error";
+
 	@Autowired
 	private IClienteService clienteService;
 
@@ -55,12 +61,12 @@ public class FacturaController {
 		Factura factura = clienteService.findFacturaById(id);
 
 		if (factura == null) {
-			flash.addFlashAttribute("error", "La factura no existe en la base de datos!");
-			return "redirect:/listar";
+			flash.addFlashAttribute(ERROR, "La factura no existe en la base de datos!");
+			return REDIRECT_LISTAR;
 		}
 
 		model.addAttribute("factura", factura);
-		model.addAttribute("titulo", "Factura: ".concat(factura.getObservacion()));
+		model.addAttribute(TITULO, "Factura: ".concat(factura.getObservacion()));
 		return "factura/ver";
 	}
 
@@ -71,17 +77,17 @@ public class FacturaController {
 		Cliente cliente = clienteService.findOne(clienteId);
 
 		if (cliente == null) {
-			flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
-			return "redirect:/listar";
+			flash.addFlashAttribute(ERROR, "El cliente no existe en la base de datos");
+			return REDIRECT_LISTAR;
 		}
 
 		Factura factura = new Factura();
 		factura.setCliente(cliente);
 
 		model.put("factura", factura);
-		model.put("titulo", "Crear Factura");
+		model.put(TITULO, CREAR_FACTURA);
 
-		return "factura/form";
+		return FACTURA_FORM;
 	}
 
 	@GetMapping(value = "/cargar-productos/{term}", produces = { "application/json" })
@@ -96,14 +102,14 @@ public class FacturaController {
 			SessionStatus status) {
 
 		if (result.hasErrors()) {
-			model.addAttribute("titulo", "Crear Factura");
-			return "factura/form";
+			model.addAttribute(TITULO, CREAR_FACTURA);
+			return FACTURA_FORM;
 		}
 
 		if (itemId == null || itemId.length == 0) {
-			model.addAttribute("titulo", "Crear Factura");
-			model.addAttribute("error", "Error: La factura NO puede no tener líneas!");
-			return "factura/form";
+			model.addAttribute(TITULO, CREAR_FACTURA);
+			model.addAttribute(ERROR, "Error: La factura NO puede no tener líneas!");
+			return FACTURA_FORM;
 		}
 
 		for (int i = 0; i < itemId.length; i++) {
@@ -135,9 +141,9 @@ public class FacturaController {
 			flash.addFlashAttribute("success", "Factura eliminada con éxito!");
 			return "redirect:/ver/" + factura.getCliente().getId();
 		}
-		flash.addFlashAttribute("error", "La factura no existe en la base de datos, no se pudo eliminar!");
+		flash.addFlashAttribute(ERROR, "La factura no existe en la base de datos, no se pudo eliminar!");
 
-		return "redirect:/listar";
+		return REDIRECT_LISTAR;
 	}
 
 	@RequestMapping(value = "/listarpedidos", method = RequestMethod.GET)
@@ -147,8 +153,8 @@ public class FacturaController {
 
 		Page<Factura> facturas = facturaService.findAll(pageRequest);
 
-		PageRender<Factura> pageRender = new PageRender<Factura>("/listarpedidos", facturas);
-		model.addAttribute("titulo", "Listado de pedidos");
+		PageRender<Factura> pageRender = new PageRender<>("/listarpedidos", facturas);
+		model.addAttribute(TITULO, "Listado de pedidos");
 		model.addAttribute("facturas", facturas);
 		model.addAttribute("page", pageRender);
 		return "listarpedidos";
@@ -197,7 +203,7 @@ public class FacturaController {
 
 		Cliente cliente = clienteService.findOne(id);
 		if (!(clienteService.exists(id))) {
-			flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
+			flash.addFlashAttribute(ERROR, "El cliente no existe en la base de datos");
 			return "redirect:/form";
 		}
 
