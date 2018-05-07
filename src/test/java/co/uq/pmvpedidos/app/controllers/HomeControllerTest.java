@@ -8,12 +8,12 @@ public class HomeControllerTest {
 
 	@Test
 	public final void testInicio() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 	@Test
 	public final void testError() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 }

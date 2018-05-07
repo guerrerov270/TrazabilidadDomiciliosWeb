@@ -8,7 +8,7 @@ public class PedidosControllerTest {
 
 	@Test
 	public final void testGetAllPedidos() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 }

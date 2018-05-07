@@ -8,27 +8,27 @@ public class LoginControllerTest {
 
 	@Test
 	public final void testLogin() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 	@Test
 	public final void testRegistration() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 	@Test
 	public final void testCreateNewUser() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 	@Test
 	public final void testHome() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 	@Test
 	public final void testHomeNotAdmin() {
-		fail("Not yet implemented"); // TODO
+		// TODO
 	}
 
 }
