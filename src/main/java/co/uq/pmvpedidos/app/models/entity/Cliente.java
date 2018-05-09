@@ -2,19 +2,15 @@ package co.uq.pmvpedidos.app.models.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,14 +31,6 @@ public class Cliente implements Serializable {
 	private String direccion;
 
 	private String empresa;
-
-	private String zona;
-
-	@Column(name = "create_at")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createAt;
-
-	private String resenia;
 
 	@OneToMany(mappedBy = "clienteF", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
@@ -72,14 +60,6 @@ public class Cliente implements Serializable {
 		facturas.add(factura);
 	}
 
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -96,14 +76,6 @@ public class Cliente implements Serializable {
 		this.empresa = empresa;
 	}
 
-	public String getResenia() {
-		return resenia;
-	}
-
-	public void setResenia(String resenia) {
-		this.resenia = resenia;
-	}
-
 	@Override
 	public String toString() {
 		return nombre + "-" + id;
@@ -115,14 +87,6 @@ public class Cliente implements Serializable {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-
-	public String getZona() {
-		return zona;
-	}
-
-	public void setZona(String zona) {
-		this.zona = zona;
 	}
 
 }

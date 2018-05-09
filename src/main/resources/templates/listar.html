@@ -21,7 +21,6 @@
 							<th>Teléfono</th>
 							<th>Nombre completo</th>
 							<th>Dirección</th>
-							<th>Zona</th>
 							<th>Empresa</th>
 							<th>Crear factura</th>
 						</tr>
@@ -32,7 +31,6 @@
 								th:href="@{/ver/} + ${cliente.id}" th:text="${cliente.id}"></a></td>
 							<td th:text="${cliente.nombre}"></td>
 							<td th:text="${cliente.direccion}"></td>
-							<td th:text="${cliente.zona}"></td>
 							<td th:text="${cliente.empresa}"></td>
 							<td><a class="btn btn-success btn-xs"
 								th:href="@{'/factura/form/' + ${cliente.id}}"

@@ -62,7 +62,7 @@ public class LoginController {
 		return REGISTRATION;
 	}
 
-	@RequestMapping(value = "/homeadmin", method = RequestMethod.GET)
+	@RequestMapping(value = "/homeauth", method = RequestMethod.GET)
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -70,7 +70,7 @@ public class LoginController {
 		modelAndView.addObject("userName",
 				"Bienvenido " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
 		modelAndView.addObject("adminMessage", "Administrador");
-		modelAndView.setViewName("/homeadmin");
+		modelAndView.setViewName("/homeauth");
 		return modelAndView;
 	}
 

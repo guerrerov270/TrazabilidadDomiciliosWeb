@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layout/layout :: head"></head>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <body>
 
 	<header th:replace="layout/layout :: header"></header>
@@ -21,7 +23,7 @@
 							aria-describedby="basic-addon2" />
 					</div>
 				</form>
-
+				<p id="demo"></p>
 				<div th:if="${#lists.isEmpty(facturas)}"
 					class="alert alert-info my-4"
 					th:text="'No hay pedidos registrados aún'"></div>
@@ -71,8 +73,6 @@
 				<nav th:replace="paginator-nav :: paginator"></nav>
 			</div>
 		</div>
-
-
 	</div>
 	<footer th:replace="layout/layout :: footer"></footer>
 </body>
