@@ -9,7 +9,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/")
 	public String inicio() {
-		return "home";
+		return "homeadmin";
 	}
 
 	@RequestMapping(value = "/error", method = RequestMethod.GET)
