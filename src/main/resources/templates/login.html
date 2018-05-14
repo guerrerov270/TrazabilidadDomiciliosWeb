@@ -12,7 +12,7 @@
 
 <body>
 	<header th:fragment="header">
-		<nav class="navbar navbar-expand-md navbar-dark bg-primary text-white">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark text-white">
 			<a class="navbar-brand" th:href="@{/factura/listarpedidos}"> <img
 				th:src="@{/images/logo.png}" width="30" height="30"
 				class="d-inline-block align-top" alt=""> La Chispa al Carbón
@@ -50,7 +50,7 @@
 		<div class="card bg-light">
 			<div class="card-header" th:text="Bienvenido"></div>
 			<div class="card-body" align="center">
-				<img th:src="@{/images/chispa.png}"
+				<img th:src="@{/images/logot.png}"
 					class="img-responsive center-block" width="200" height="200"
 					alt="Logo" />
 				<form th:action="@{/login}" method="POST" class="form-signin">
