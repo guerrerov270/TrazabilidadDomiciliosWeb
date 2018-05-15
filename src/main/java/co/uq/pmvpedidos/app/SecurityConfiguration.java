@@ -49,12 +49,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.defaultSuccessUrl("/factura/listarpedidos").usernameParameter("email").passwordParameter("password")
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").and()
 				.exceptionHandling().accessDeniedPage("/home").and()
-				// Las peticiones /login pasaran previamente por este filtro
-				.addFilterBefore(new LoginFilter("/login", authenticationManager()),
-						UsernamePasswordAuthenticationFilter.class)
+				// Las peticiones /login desde el móvil pasaran previamente por este filtro
+				.addFilterBefore(new LoginFilter("/api/login", authenticationManager()),
+						UsernamePasswordAuthenticationFilter.class);
 
-				// Las demás peticiones pasarán por este filtro para validar el token
-				.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
+		// Las demás peticiones pasarán por este filtro para validar el token
+		// .addFilterBefore(new JwtFilter(),
+		// UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Override
