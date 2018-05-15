@@ -12,14 +12,14 @@ import co.uq.pmvpedidos.app.models.dao.IPedidoDao;
 import co.uq.pmvpedidos.app.models.entity.Factura;
 
 @RestController
-// @RequestMapping("/api")
+@RequestMapping("/api")
 public class PedidosController {
 
 	@Autowired
 	private IPedidoDao pedidoRepository;
 
 	// Rutas móvil Get All
-	@GetMapping(path = "/asignados")
+	@GetMapping("/asignados")
 	// @ResponseBody
 	public List<Factura> getAllPedidos() {
 		return pedidoRepository.findAll();
