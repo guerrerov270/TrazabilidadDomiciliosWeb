@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -33,6 +34,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.jdbcAuthentication().usersByUsernameQuery(usersQuery).authoritiesByUsernameQuery(rolesQuery)
 				.dataSource(dataSource).passwordEncoder(bCryptPasswordEncoder);
+
+		// Creamos una cuenta de usuario por default
+		auth.inMemoryAuthentication().withUser("ask").password("123").roles("ADMIN");
+
 	}
 
 	@Override
@@ -43,7 +48,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authenticated().and().csrf().disable().formLogin().loginPage("/login").failureUrl("/login?error=true")
 				.defaultSuccessUrl("/factura/listarpedidos").usernameParameter("email").passwordParameter("password")
 				.and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").and()
-				.exceptionHandling().accessDeniedPage("/home");
+				.exceptionHandling().accessDeniedPage("/home").and()
+				// Las peticiones /login pasaran previamente por este filtro
+				.addFilterBefore(new LoginFilter("/login", authenticationManager()),
+						UsernamePasswordAuthenticationFilter.class)
+
+				// Las demás peticiones pasarán por este filtro para validar el token
+				.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Override
