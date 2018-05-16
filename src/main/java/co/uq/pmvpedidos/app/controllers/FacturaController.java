@@ -211,4 +211,12 @@ public class FacturaController {
 		return "ver";
 	}
 
+	@RequestMapping(value = "/setestado")
+	public String cambioEstado(Map<String, Object> model, RedirectAttributes flash) {
+
+		System.out.println(
+				"*****************************************************************************Estado seleccionado");
+		return "setestado";
+	}
+
 }

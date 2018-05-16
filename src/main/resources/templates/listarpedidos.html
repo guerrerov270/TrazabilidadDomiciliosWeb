@@ -53,7 +53,8 @@
 							<td th:text="${factura.cliente}"></td>
 							<td th:text="${factura.creado}"></td>
 							<td th:text="${factura.entregado}"></td>
-							<td><select class="form-control" id="estados" name="estados">
+							<td><select class="form-control" id="estados" name="estados"
+								onchange="setEstado()">
 									<option value="">Seleccione uno</option>
 									<option th:each="state : ${estados}" th:value="${state.id}"
 										th:text="${state.descripcion}"
@@ -75,5 +76,13 @@
 		</div>
 	</div>
 	<footer th:replace="layout/layout :: footer"></footer>
+
+	<script>
+		function setEstado() {
+			var selecciondo = document.getElementById("estados").value;
+			document.getElementById("demo").innerHTML = "Cambio de estado: "
+					+ seleccionado;
+		}
+	</script>
 </body>
 </html>
